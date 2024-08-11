@@ -14,9 +14,9 @@ test("shows 6 product by default", async () => {
 test("clicking on the button loads 6 more products", async () => {
   render(<App />);
 
-  const button = await screen.findAllByRole("button", {
+  const button = (await screen.findAllByRole("button", {
     name: /load more/i,
-  });
+  })) as HTMLButtonElement[];
   // console.log("button:", button);
 
   user.click(button[0]);
