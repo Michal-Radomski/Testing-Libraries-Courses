@@ -1,9 +1,28 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import user from "@testing-library/user-event";
+
 import App from "./App";
 
-test("renders learn react link", () => {
+test("shows 6 product by default", async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  const titles = await screen.findAllByRole("heading");
+  expect(titles).toHaveLength(6);
+});
+
+test("clicking on the button loads 6 more products", async () => {
+  render(<App />);
+
+  const button = await screen.findAllByRole("button", {
+    name: /load more/i,
+  });
+  // console.log("button:", button);
+
+  user.click(button[0]);
+
+  await waitFor(async () => {
+    const titles = await screen.findAllByRole("heading");
+    expect(titles).toHaveLength(12);
+  });
 });

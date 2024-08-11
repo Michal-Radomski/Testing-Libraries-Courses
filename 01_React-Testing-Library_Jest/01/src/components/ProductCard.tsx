@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProductCard({ product: { name, price, material, color } }: { product: Product }) {
+function ProductCard({ product: { name, price, material, color } }: { product: Product }): JSX.Element {
   return (
     <React.Fragment>
       <div className="col-span-1 flex flex-col">
