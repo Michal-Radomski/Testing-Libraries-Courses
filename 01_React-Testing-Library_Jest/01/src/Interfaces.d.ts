@@ -1,3 +1,5 @@
+// Types and Interfaces
+
 interface Product {
   id: string;
   name: string;
