@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserForm({ onUserAdd }: { onUserAdd: (user: User) => void | Function }): JSX.Element {
+function UserForm({ onUserAdd }: { onUserAdd?: (user: User) => void | Function }): JSX.Element {
   const [email, setEmail] = React.useState<string>("");
   const [name, setName] = React.useState<string>("");
 
@@ -8,13 +8,13 @@ function UserForm({ onUserAdd }: { onUserAdd: (user: User) => void | Function })
   // const handleSubmit = (event: React.SyntheticEvent):void => {
   //   event.preventDefault();
 
-  //   onUserAdd({ name, email });
+  //   onUserAdd!({ name, email });
   // };
   //* V2
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    onUserAdd({ name, email });
+    onUserAdd!({ name, email });
   };
 
   return (
