@@ -8,11 +8,17 @@ function UserForm({ onUserAdd }: { onUserAdd?: (user: User) => void | Function }
   // const handleSubmit = (event: React.SyntheticEvent):void => {
   //   event.preventDefault();
 
+  // setEmail("");
+  // setName("");
+
   //   onUserAdd!({ name, email });
   // };
   //* V2
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+
+    setEmail("");
+    setName("");
 
     onUserAdd!({ name, email });
   };
@@ -21,12 +27,20 @@ function UserForm({ onUserAdd }: { onUserAdd?: (user: User) => void | Function }
     <React.Fragment>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name</label>
-          <input value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)} />
+          <label htmlFor="name">Name</label>
+          <input
+            value={name}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
+            id="name"
+          />
         </div>
         <div>
-          <label>Email</label>
-          <input value={email} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)} />
+          <label htmlFor="email">Email</label>
+          <input
+            value={email}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
+            id="email"
+          />
         </div>
         <button>Add User</button>
       </form>
