@@ -9,6 +9,7 @@ test("it shows two inputs and a button", () => {
   // Manipulate the component or find an element in it
   const inputs = screen.getAllByRole("textbox") as HTMLInputElement[];
   const button = screen.getByRole("button") as HTMLButtonElement;
+  // console.log("button:", button);
 
   // Assertion - make sure the component is doing
   // What we expect it to do
