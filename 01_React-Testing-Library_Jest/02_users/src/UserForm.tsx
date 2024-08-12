@@ -1,10 +1,17 @@
 import React from "react";
 
-function UserForm({ onUserAdd }: { onUserAdd: Function }): JSX.Element {
+function UserForm({ onUserAdd }: { onUserAdd: (user: User) => void | Function }): JSX.Element {
   const [email, setEmail] = React.useState<string>("");
   const [name, setName] = React.useState<string>("");
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
+  //* V1
+  // const handleSubmit = (event: React.SyntheticEvent):void => {
+  //   event.preventDefault();
+
+  //   onUserAdd({ name, email });
+  // };
+  //* V2
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
     onUserAdd({ name, email });
@@ -15,11 +22,11 @@ function UserForm({ onUserAdd }: { onUserAdd: Function }): JSX.Element {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name</label>
-          <input value={name} onChange={(e) => setName(e.target.value)} />
+          <input value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)} />
         </div>
         <div>
           <label>Email</label>
-          <input value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input value={email} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)} />
         </div>
         <button>Add User</button>
       </form>
