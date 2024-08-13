@@ -19,7 +19,7 @@ function UserList({ users }: { users: User[] }): JSX.Element {
             <th>Email</th>
           </tr>
         </thead>
-        <tbody>{renderedUsers}</tbody>
+        <tbody data-testid="users">{renderedUsers}</tbody>
       </table>
     </React.Fragment>
   );
