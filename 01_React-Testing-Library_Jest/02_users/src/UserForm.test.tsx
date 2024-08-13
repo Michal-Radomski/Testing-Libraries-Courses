@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import UserForm from "./UserForm";
 
-test("it shows two inputs and a button", () => {
+test("it shows two inputs and a button", (): void => {
   // Render the component
   render(<UserForm />);
 
@@ -17,7 +17,7 @@ test("it shows two inputs and a button", () => {
   expect(button).toBeInTheDocument();
 });
 
-test("it calls onUserAdd when the form is submitted", async () => {
+test("it calls onUserAdd when the form is submitted", async (): Promise<void> => {
   const mock = jest.fn();
   // console.log("mock:", mock);
 
@@ -52,7 +52,7 @@ test("it calls onUserAdd when the form is submitted", async () => {
   expect(mock).toHaveBeenCalledWith({ name: "jane", email: "jane@jane.com" });
 });
 
-test("empties the two inputs when form is submitted", async () => {
+test("empties the two inputs when form is submitted", async (): Promise<void> => {
   await render(<UserForm onUserAdd={() => {}} />);
 
   const nameInput = screen.getByRole("textbox", { name: /name/i }) as HTMLInputElement;

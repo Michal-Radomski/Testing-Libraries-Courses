@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import UserList from "./UserList";
 
-function renderComponent(): { users: User[]; container: HTMLElement } {
+const renderComponent = (): { users: User[]; container: HTMLElement } => {
   const users: User[] = [
     { name: "jane", email: "jane@jane.com" },
     { name: "sam", email: "sam@sam.com" },
@@ -10,10 +10,10 @@ function renderComponent(): { users: User[]; container: HTMLElement } {
   // console.log("container:", container);
 
   return { users, container };
-}
+};
 
-//* V1
-test("render one row per user", () => {
+//* V1 - Preferable!
+test("render one row per user", (): void => {
   // Render the component
   renderComponent();
 
@@ -28,15 +28,15 @@ test("render one row per user", () => {
 });
 
 //* V2
-test("render one row per user2", () => {
+test("render one row per user2", (): void => {
   // eslint-disable-next-line testing-library/no-node-access
-  const rows = renderComponent().container.querySelectorAll("tbody tr") as unknown as HTMLTableRowElement[];
+  const rows = renderComponent().container.querySelectorAll("tbody tr") as NodeListOf<HTMLTableRowElement>;
 
   // Assertion: correct number of rows in the table
   expect(rows).toHaveLength(2);
 });
 
-test("render the email and name of each user", () => {
+test("render the email and name of each user", (): void => {
   const { users } = renderComponent();
 
   for (let user of users) {
