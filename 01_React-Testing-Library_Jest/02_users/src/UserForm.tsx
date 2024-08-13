@@ -4,23 +4,12 @@ function UserForm({ onUserAdd }: { onUserAdd?: (user: User) => void | Function }
   const [email, setEmail] = React.useState<string>("");
   const [name, setName] = React.useState<string>("");
 
-  //* V1
-  // const handleSubmit = (event: React.SyntheticEvent):void => {
-  //   event.preventDefault();
-
-  // setEmail("");
-  // setName("");
-
-  //   onUserAdd!({ name, email });
-  // };
-  //* V2
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement> | React.SyntheticEvent): void => {
     event.preventDefault();
 
+    onUserAdd!({ name, email });
     setEmail("");
     setName("");
-
-    onUserAdd!({ name, email });
   };
 
   return (
