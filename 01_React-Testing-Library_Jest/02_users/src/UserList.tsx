@@ -1,7 +1,7 @@
 import React from "react";
 
 function UserList({ users }: { users: User[] }): JSX.Element {
-  const renderedUsers: JSX.Element[] = users.map((user: User) => {
+  const renderedUsers: JSX.Element[] = users.map((user: User): JSX.Element => {
     return (
       <tr key={user.name}>
         <td>{user.name}</td>
