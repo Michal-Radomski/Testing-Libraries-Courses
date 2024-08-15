@@ -10,7 +10,7 @@ test("getBy, queryBy, findBy finding 0 elements", async (): Promise<void> => {
 
   expect(screen.queryByRole("textbox")).toEqual(null);
 
-  let errorThrown = false;
+  let errorThrown: boolean = false;
   try {
     await screen.findByRole("textbox");
   } catch (err) {
@@ -23,10 +23,12 @@ test("getBy, queryBy, findBy when they find 1 element", async (): Promise<void> 
   render(<ColorList />);
 
   expect(screen.getByRole("list")).toBeInTheDocument();
+
   expect(
     // eslint-disable-next-line testing-library/prefer-presence-queries
     screen.queryByRole("list")
   ).toBeInTheDocument();
+
   expect(await screen.findByRole("list")).toBeInTheDocument();
 });
 
@@ -43,7 +45,7 @@ test("getAllBy, queryAllBy, findAllBy", async (): Promise<void> => {
 test("favor using getBy to prove an element exists", (): void => {
   render(<ColorList />);
 
-  const element = screen.getByRole("list");
+  const element = screen.getByRole("list") as HTMLUListElement;
 
   expect(element).toBeInTheDocument();
 });
@@ -51,15 +53,16 @@ test("favor using getBy to prove an element exists", (): void => {
 test("favor queryBy when proving an element does not exist", (): void => {
   render(<ColorList />);
 
-  const element = screen.queryByRole("textbox");
+  const element = screen.queryByRole("textbox") as HTMLInputElement | null;
 
   expect(element).not.toBeInTheDocument();
 });
 
-test("Favor findBy or findAllBy when data fetching", async (): Promise<void> => {
+//* Fetching/ promise
+test("favor findBy or findAllBy when data fetching", async (): Promise<void> => {
   render(<LoadableColorList />);
 
-  const els = await screen.findAllByRole("listitem");
+  const elems = (await screen.findAllByRole("listitem")) as HTMLLIElement[];
 
-  expect(els).toHaveLength(3);
+  expect(elems).toHaveLength(3);
 });

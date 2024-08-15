@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 
 import { DataForm } from "./CriteriaNotes";
 
-test("selecting different elements", () => {
+test("selecting different elements", (): void => {
   render(<DataForm />);
 
   const elements = [
@@ -17,7 +17,7 @@ test("selecting different elements", () => {
     screen.getByTitle(/ready to submit/i),
 
     screen.getByTestId("image wrapper"),
-  ];
+  ] as HTMLElement[];
 
   for (let element of elements) {
     expect(element).toBeInTheDocument();

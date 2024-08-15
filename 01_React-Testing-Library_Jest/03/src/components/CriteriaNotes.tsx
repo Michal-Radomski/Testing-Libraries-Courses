@@ -8,7 +8,7 @@ export function DataForm(): JSX.Element {
       <h3>Enter Data</h3>
 
       <div data-testid="image wrapper">
-        <img alt="data" src="data.jpg" />
+        <img alt="data" src="https://testing-library.com/img/logo-large.png" width={"auto"} height={"auto"} />
       </div>
 
       <label htmlFor="email">Email</label>

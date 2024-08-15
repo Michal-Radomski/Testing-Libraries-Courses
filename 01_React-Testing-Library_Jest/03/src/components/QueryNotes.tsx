@@ -18,14 +18,18 @@ export function LoadableColorList(): JSX.Element {
   const [colors, setColors] = React.useState<string[]>([]);
 
   React.useEffect(() => {
-    fakeFetchColors().then((c: string[]) => setColors(c));
+    fakeFetchColors()
+      .then((colors: string[]) => setColors(colors))
+      .catch((err) => console.log("err:", err));
   }, []);
 
-  const renderedColors = colors.map((color: string) => {
+  const renderedColors: JSX.Element[] = colors.map((color: string) => {
     return <li key={color}>{color}</li>;
   });
 
-  return <ul>{renderedColors}</ul>;
+  // return <ul>{renderedColors}</ul>;
+  const List: JSX.Element = <ul>{renderedColors}</ul>;
+  return List;
 }
 
 const QueryNotes = (): JSX.Element => {
