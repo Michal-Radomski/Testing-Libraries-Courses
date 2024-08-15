@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
-import { ColorList } from "./QueryNotes";
+import { ColorList, LoadableColorList } from "./QueryNotes";
 
 test("getBy, queryBy, findBy finding 0 elements", async (): Promise<void> => {
   render(<ColorList />);
@@ -54,4 +54,12 @@ test("favor queryBy when proving an element does not exist", (): void => {
   const element = screen.queryByRole("textbox");
 
   expect(element).not.toBeInTheDocument();
+});
+
+test("Favor findBy or findAllBy when data fetching", async (): Promise<void> => {
+  render(<LoadableColorList />);
+
+  const els = await screen.findAllByRole("listitem");
+
+  expect(els).toHaveLength(3);
 });
