@@ -3,6 +3,7 @@ import React from "react";
 import "./App.scss";
 import RoleExample from "./components/RoleExample";
 import AccessibleName, { IconButtons, MoreNames } from "./components/AccessibleName";
+import QueryNotes from "./components/QueryNotes";
 
 const App = (): JSX.Element => {
   return (
@@ -17,6 +18,10 @@ const App = (): JSX.Element => {
       <br />
       <hr />
       <IconButtons />
+      <br />
+      <hr />
+
+      <QueryNotes />
       <br />
       <hr />
     </React.Fragment>
