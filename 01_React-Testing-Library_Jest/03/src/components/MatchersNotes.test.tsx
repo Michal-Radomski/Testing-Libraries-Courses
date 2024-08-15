@@ -32,4 +32,5 @@ test("the form displays two buttons", (): void => {
   const form = screen.getByRole("form") as HTMLFormElement;
 
   expect(form).toContainRole("link", 0); //* No links in the component!
+  expect(form).toContainRole("button", 2); //* Two buttons in the component!
 });
