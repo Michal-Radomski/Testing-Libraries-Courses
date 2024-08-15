@@ -15,12 +15,29 @@ export default AccessibleName;
 
 export function MoreNames(): JSX.Element {
   return (
-    <div>
-      <label htmlFor="email">Email</label>
-      <input id="email" />
+    <React.Fragment>
+      <div>
+        <label htmlFor="email">Email</label>
+        <input id="email" />
+        <label htmlFor="search">Search</label>
+        <input id="search" />
+      </div>
+    </React.Fragment>
+  );
+}
 
-      <label htmlFor="search">Search</label>
-      <input id="search" />
-    </div>
+export function IconButtons(): JSX.Element {
+  return (
+    <React.Fragment>
+      <div>
+        <button aria-label="sign in">
+          <svg />
+        </button>
+
+        <button aria-label="sign out">
+          <svg />
+        </button>
+      </div>
+    </React.Fragment>
   );
 }

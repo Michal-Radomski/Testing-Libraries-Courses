@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
-import AccessibleName, { MoreNames } from "./AccessibleName";
+import AccessibleName, { IconButtons, MoreNames } from "./AccessibleName";
 
 test("can select by accessible name", (): void => {
   render(<AccessibleName />);
@@ -29,4 +29,18 @@ test("shows an email and search input", (): void => {
 
   expect(emailInput).toBeInTheDocument();
   expect(searchInput).toBeInTheDocument();
+});
+
+test("find elements based on label", () => {
+  render(<IconButtons />);
+
+  const signInButton = screen.getByRole("button", {
+    name: /sign in/i,
+  });
+  const signOutButton = screen.getByRole("button", {
+    name: /sign out/i,
+  });
+
+  expect(signInButton).toBeInTheDocument();
+  expect(signOutButton).toBeInTheDocument();
 });

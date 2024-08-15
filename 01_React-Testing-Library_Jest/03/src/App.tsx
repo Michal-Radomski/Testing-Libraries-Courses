@@ -2,7 +2,7 @@ import React from "react";
 
 import "./App.scss";
 import RoleExample from "./components/RoleExample";
-import AccessibleName, { MoreNames } from "./components/AccessibleName";
+import AccessibleName, { IconButtons, MoreNames } from "./components/AccessibleName";
 
 const App = (): JSX.Element => {
   return (
@@ -14,6 +14,9 @@ const App = (): JSX.Element => {
       <br />
       <hr />
       <MoreNames />
+      <br />
+      <hr />
+      <IconButtons />
       <br />
       <hr />
     </React.Fragment>
