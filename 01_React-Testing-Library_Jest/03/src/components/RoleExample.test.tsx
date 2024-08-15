@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 
 import RoleExample from "./RoleExample";
 
-test("can find elements by role", () => {
+test("can find elements by role", (): void => {
   render(<RoleExample />);
 
   const roles = [

@@ -12,3 +12,15 @@ const AccessibleName = (): JSX.Element => {
 };
 
 export default AccessibleName;
+
+export function MoreNames(): JSX.Element {
+  return (
+    <div>
+      <label htmlFor="email">Email</label>
+      <input id="email" />
+
+      <label htmlFor="search">Search</label>
+      <input id="search" />
+    </div>
+  );
+}
