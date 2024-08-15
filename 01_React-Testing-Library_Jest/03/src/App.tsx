@@ -5,6 +5,7 @@ import RoleExample from "./components/RoleExample";
 import AccessibleName, { IconButtons, MoreNames } from "./components/AccessibleName";
 import QueryNotes from "./components/QueryNotes";
 import CriteriaNotes from "./components/CriteriaNotes";
+import MatchersNotes from "./components/MatchersNotes";
 
 const App = (): JSX.Element => {
   return (
@@ -27,6 +28,10 @@ const App = (): JSX.Element => {
       <hr />
 
       <CriteriaNotes />
+      <br />
+      <hr />
+
+      <MatchersNotes />
       <br />
       <hr />
     </React.Fragment>
