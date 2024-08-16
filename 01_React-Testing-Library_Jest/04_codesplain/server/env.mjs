@@ -1,7 +1,7 @@
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   dotenv.config({
-    path: './server/.env',
+    path: "./server/.env",
   });
 }

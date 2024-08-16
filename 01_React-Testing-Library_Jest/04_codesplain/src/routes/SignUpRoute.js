@@ -1,4 +1,4 @@
-import SignUpForm from '../components/auth/SignUpForm';
+import SignUpForm from "../components/auth/SignUpForm";
 
 function SignUpRoute() {
   return (
@@ -12,18 +12,14 @@ function SignUpRoute() {
           />
 
           <div className="hidden mt-24 lg:relative lg:block lg:p-12">
-            <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-              Welcome to Codesplain!
-            </h2>
+            <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-4xl">Welcome to Codesplain!</h2>
           </div>
         </section>
 
         <main className="flex items-center justify-center px-8 py-2 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6">
           <div className="max-w-xl lg:max-w-3xl">
             <div className="relative block lg:hidden">
-              <h1 className="mt-2 mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">
-                Welcome to Codesplain!
-              </h1>
+              <h1 className="mt-2 mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">Welcome to Codesplain!</h1>
             </div>
 
             <SignUpForm />

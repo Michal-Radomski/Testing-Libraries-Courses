@@ -8,8 +8,7 @@ function Hero() {
           </h1>
 
           <p className="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
-            Get a readable explanation of any code snippet from any Github
-            Repository in seconds.
+            Get a readable explanation of any code snippet from any Github Repository in seconds.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">

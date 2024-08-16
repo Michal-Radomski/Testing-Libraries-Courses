@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import AuthButtons from './auth/AuthButtons';
-import SearchBar from './search/SearchBar';
+import { Link } from "react-router-dom";
+import AuthButtons from "./auth/AuthButtons";
+import SearchBar from "./search/SearchBar";
 
 function Header() {
   return (

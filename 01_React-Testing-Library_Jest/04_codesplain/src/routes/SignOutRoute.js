@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import useSignOut from '../hooks/useSignOut';
+import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import useSignOut from "../hooks/useSignOut";
 
 function SignOutRoute() {
   const [shouldNavigate, setShouldNavigate] = useState(false);
@@ -21,13 +21,9 @@ function SignOutRoute() {
   return (
     <div className="grid mt-40 px-4 bg-white place-content-center">
       <div className="text-center">
-        <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Sad to see you go...
-        </p>
+        <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Sad to see you go...</p>
 
-        <p className="mt-4 text-gray-500">
-          Redirecting you to the home page...
-        </p>
+        <p className="mt-4 text-gray-500">Redirecting you to the home page...</p>
       </div>
     </div>
   );

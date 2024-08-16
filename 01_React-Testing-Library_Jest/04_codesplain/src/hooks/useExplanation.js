@@ -1,6 +1,6 @@
-import axios from 'axios';
-import useSWR from 'swr';
-import getLangFromPath from '../util/getLangFromPath';
+import axios from "axios";
+import useSWR from "swr";
+import getLangFromPath from "../util/getLangFromPath";
 
 async function explanationFetcher([url, { text, path }]) {
   const { data } = await axios.post(url, {
@@ -13,10 +13,7 @@ async function explanationFetcher([url, { text, path }]) {
 }
 
 export default function useExplanation({ text, path }) {
-  const { data, error, isLoading } = useSWR(
-    [`/api/explain`, { text, path }],
-    explanationFetcher
-  );
+  const { data, error, isLoading } = useSWR([`/api/explain`, { text, path }], explanationFetcher);
 
   return {
     isLoading,

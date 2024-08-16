@@ -1,11 +1,8 @@
-import classNames from 'classnames';
-import Label from './Label';
+import classNames from "classnames";
+import Label from "./Label";
 
 function Checkbox({ className, label, ...rest }) {
-  const classes = classNames(
-    'h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm',
-    className
-  );
+  const classes = classNames("h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm", className);
 
   return (
     <div className="flex gap-4">

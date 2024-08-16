@@ -1,12 +1,12 @@
-import { useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
-import useFile from '../../hooks/useFile';
-import Editor from './Editor';
-import ExplanationList from './ExplanationList';
-import Breadcrumbs from './Breadcrumbs';
+import { useState, useRef } from "react";
+import { useParams } from "react-router-dom";
+import useFile from "../../hooks/useFile";
+import Editor from "./Editor";
+import ExplanationList from "./ExplanationList";
+import Breadcrumbs from "./Breadcrumbs";
 
 function EditorPage() {
-  const { '*': path, owner, repoName } = useParams();
+  const { "*": path, owner, repoName } = useParams();
   const { file } = useFile(owner, repoName, path);
   const [selections, setSelections] = useState([]);
   const editorRef = useRef(null);
@@ -26,11 +26,7 @@ function EditorPage() {
     <div>
       <Breadcrumbs path={path} />
       <Editor onExplainRequest={handleExplainRequest} file={file} />
-      <ExplanationList
-        editorRef={editorRef}
-        selections={selections}
-        onExplanationClose={handleExplanationClose}
-      />
+      <ExplanationList editorRef={editorRef} selections={selections} onExplanationClose={handleExplanationClose} />
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import useSWR, { mutate } from 'swr';
-import axios from 'axios';
+import useSWR, { mutate } from "swr";
+import axios from "axios";
 
 async function signOut(path) {
   try {
     const { data } = await axios.get(path);
-    mutate('/api/user');
+    mutate("/api/user");
     return data;
   } catch (err) {
     if (err.response) {
@@ -16,7 +16,7 @@ async function signOut(path) {
 }
 
 function useSignOut() {
-  const { data, error, isLoading } = useSWR('/api/auth/signout', signOut);
+  const { data, error, isLoading } = useSWR("/api/auth/signout", signOut);
 
   return {
     isSignedOut: data,

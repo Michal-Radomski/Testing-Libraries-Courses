@@ -1,4 +1,4 @@
-import validate from 'validate.js';
+import validate from "validate.js";
 
 export function validateSignUp(body) {
   const constraints = {
@@ -13,7 +13,7 @@ export function validateSignUp(body) {
       },
     },
     passwordConfirmation: {
-      equality: 'password',
+      equality: "password",
     },
   };
   return validate(body, constraints);

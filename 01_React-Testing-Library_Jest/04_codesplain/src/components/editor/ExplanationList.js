@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import ExplanationPanel from './ExplanationPopup';
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+import ExplanationPanel from "./ExplanationPopup";
 
 function ExplanationList({ editorRef, selections, onExplanationClose }) {
   const [widgets, setWidgets] = useState([]);
@@ -23,19 +23,14 @@ function ExplanationList({ editorRef, selections, onExplanationClose }) {
         return widget;
       });
 
-      return updatedWidgets.filter((w) =>
-        selections.find((s) => s.line === w.line)
-      );
+      return updatedWidgets.filter((w) => selections.find((s) => s.line === w.line));
     };
     setWidgets(updateWidgets);
   }, [selections, editorRef]);
 
   const renderedZones = widgets.map((widget) => {
     if (widget.domNode && widget.domNode.nodeType === 1) {
-      return createPortal(
-        <ExplanationPanel selection={widget} onClose={onExplanationClose} />,
-        widget.domNode
-      );
+      return createPortal(<ExplanationPanel selection={widget} onClose={onExplanationClose} />, widget.domNode);
     }
     return null;
   });
@@ -52,8 +47,8 @@ function buildWidget(selection) {
     },
     getDomNode: function () {
       if (!this.domNode) {
-        this.domNode = document.createElement('div');
-        this.domNode.classList.add('z-50');
+        this.domNode = document.createElement("div");
+        this.domNode.classList.add("z-50");
       }
       return this.domNode;
     },

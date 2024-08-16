@@ -1,14 +1,14 @@
-import classNames from 'classnames';
-import { IssueDraftIcon as Spinner } from '@primer/octicons-react';
+import classNames from "classnames";
+import { IssueDraftIcon as Spinner } from "@primer/octicons-react";
 
 function Button({ wide, className, children, loading, ...rest }) {
   const classes = classNames(
-    'rounded-md border bg-blue-600 py-3 text-sm font-medium text-white',
+    "rounded-md border bg-blue-600 py-3 text-sm font-medium text-white",
     {
-      'opacity-50': loading,
+      "opacity-50": loading,
     },
-    wide ? 'px-12' : 'px-6',
-    loading ? 'border-blue-300' : 'border-blue-600',
+    wide ? "px-12" : "px-6",
+    loading ? "border-blue-300" : "border-blue-600",
     className
   );
 

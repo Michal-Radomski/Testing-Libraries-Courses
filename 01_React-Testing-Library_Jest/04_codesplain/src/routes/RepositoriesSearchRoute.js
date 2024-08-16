@@ -1,17 +1,13 @@
-import { useSearchParams } from 'react-router-dom';
-import useRepositories from '../hooks/useRepositories';
-import RepositoriesListItem from '../components/repositories/RepositoriesListItem';
+import { useSearchParams } from "react-router-dom";
+import useRepositories from "../hooks/useRepositories";
+import RepositoriesListItem from "../components/repositories/RepositoriesListItem";
 
 function RepositoriesSearchRoute() {
   const [params] = useSearchParams();
-  const {
-    data: repositories,
-    isLoading,
-    error,
-  } = useRepositories(params.get('q'));
+  const { data: repositories, isLoading, error } = useRepositories(params.get("q"));
 
   if (isLoading) {
-    return 'Loading...';
+    return "Loading...";
   } else if (error) {
     return error.message;
   }

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import FileIcon from './FileIcon';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import FileIcon from "./FileIcon";
 
 function File({ file, repoName, owner }) {
   return (

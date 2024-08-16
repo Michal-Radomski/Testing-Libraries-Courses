@@ -1,13 +1,13 @@
-import { useParams } from 'react-router-dom';
-import TreeEntry from './TreeEntry';
-import useEntry from '../../hooks/useEntry';
+import { useParams } from "react-router-dom";
+import TreeEntry from "./TreeEntry";
+import useEntry from "../../hooks/useEntry";
 
 function TreePanel() {
   const { owner, repoName } = useParams();
   const { entry, isLoading, error } = useEntry({
     owner,
     repoName,
-    path: '',
+    path: "",
   });
 
   if (isLoading) {

@@ -1,4 +1,4 @@
-import SignInForm from '../components/auth/SignInForm';
+import SignInForm from "../components/auth/SignInForm";
 
 function SignInRoute() {
   return (
@@ -14,13 +14,9 @@ function SignInRoute() {
 
         <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-10 lg:px-10 xl:col-span-6">
           <div className="max-w-xl lg:max-w-3xl">
-            <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-              Welcome Back!
-            </h1>
+            <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">Welcome Back!</h1>
 
-            <p className="my-4 leading-relaxed text-gray-500">
-              Enter your email and password to sign in
-            </p>
+            <p className="my-4 leading-relaxed text-gray-500">Enter your email and password to sign in</p>
 
             <SignInForm />
           </div>

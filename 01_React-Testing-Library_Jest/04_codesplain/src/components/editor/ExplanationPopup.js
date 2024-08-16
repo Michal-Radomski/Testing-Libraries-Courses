@@ -1,11 +1,11 @@
-import useExplanation from '../../hooks/useExplanation';
+import useExplanation from "../../hooks/useExplanation";
 
 function ExplanationPopup({ selection, onClose }) {
   const { explanation, isLoading, error } = useExplanation(selection);
 
   let content;
   if (isLoading) {
-    content = 'Loading...';
+    content = "Loading...";
   } else if (error) {
     content = error.message;
   } else if (explanation) {

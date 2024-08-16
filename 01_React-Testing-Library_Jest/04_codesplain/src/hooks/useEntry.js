@@ -1,18 +1,18 @@
-import axios from 'axios';
-import useSWR from 'swr';
+import axios from "axios";
+import useSWR from "swr";
 
 async function filesFetcher(url) {
   const { data } = await axios.get(url);
 
-  if (data.type === 'file') {
+  if (data.type === "file") {
     return data;
   }
 
   data.entries.sort((a, b) => {
-    if (a.type === 'file' && b.type === 'dir') {
+    if (a.type === "file" && b.type === "dir") {
       return 1;
     }
-    if (a.type === 'dir' && b.type === 'file') {
+    if (a.type === "dir" && b.type === "file") {
       return -1;
     }
     return a.name.localeCompare(b.name);

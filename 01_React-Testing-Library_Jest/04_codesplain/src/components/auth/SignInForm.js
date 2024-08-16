@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import Input from '../forms/Input';
-import Button from '../forms/Button';
-import FormError from '../forms/FormError';
-import useSignIn from '../../hooks/useSignIn';
+import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import Input from "../forms/Input";
+import Button from "../forms/Button";
+import FormError from "../forms/FormError";
+import useSignIn from "../../hooks/useSignIn";
 
 function SignInForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { signIn, error, isLoading, isSignedIn } = useSignIn();
 
@@ -58,7 +58,7 @@ function SignInForm() {
 
       <div className="col-span-6 flex items-center">
         <p className="text-sm text-gray-500">
-          Don't have an account?{' '}
+          Don't have an account?{" "}
           <Link to="/signup" className="text-gray-700 underline">
             Sign up
           </Link>

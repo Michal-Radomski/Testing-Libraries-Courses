@@ -1,10 +1,10 @@
-import React from 'react';
-import MonacoEditor from '@monaco-editor/react';
-import getLangFromPath from '../../util/getLangFromPath';
+import React from "react";
+import MonacoEditor from "@monaco-editor/react";
+import getLangFromPath from "../../util/getLangFromPath";
 
 function Editor({ file, onExplainRequest }) {
   return (
-    <div className="relative pt-1" style={{ backgroundColor: '#1e1e1e' }}>
+    <div className="relative pt-1" style={{ backgroundColor: "#1e1e1e" }}>
       <MonacoEditor
         height="calc(100vh - 88px)"
         theme="vs-dark"
@@ -35,27 +35,18 @@ function Editor({ file, onExplainRequest }) {
 
           editor.addOverlayWidget({
             domNode: null,
-            getId: () => 'explain-code-widget',
+            getId: () => "explain-code-widget",
             getDomNode: () => {
-              const { height } = editor
-                .getContainerDomNode()
-                .getBoundingClientRect();
-              const domNode = document.createElement('div');
-              domNode.style.position = 'absolute';
+              const { height } = editor.getContainerDomNode().getBoundingClientRect();
+              const domNode = document.createElement("div");
+              domNode.style.position = "absolute";
               domNode.style.top = `${height - 95}px`;
-              domNode.style.right = '40px';
-              domNode.classList.add('z-50');
-              const button = document.createElement('button');
-              button.classList.add(
-                'bg-blue-500',
-                'text-white',
-                'p-3',
-                'rounded',
-                'font-bold',
-                'text-xl'
-              );
-              button.innerText = 'Explain Code';
-              button.addEventListener('click', explainCode);
+              domNode.style.right = "40px";
+              domNode.classList.add("z-50");
+              const button = document.createElement("button");
+              button.classList.add("bg-blue-500", "text-white", "p-3", "rounded", "font-bold", "text-xl");
+              button.innerText = "Explain Code";
+              button.addEventListener("click", explainCode);
               domNode.appendChild(button);
               return domNode;
             },
@@ -63,12 +54,12 @@ function Editor({ file, onExplainRequest }) {
           });
 
           editor.addAction({
-            id: 'explain-code',
-            label: 'Explain This Code',
+            id: "explain-code",
+            label: "Explain This Code",
             keybindings: [],
             precondition: null,
             keybindingContext: null,
-            contextMenuGroupId: 'modification',
+            contextMenuGroupId: "modification",
             contextMenuOrder: 1,
             run: explainCode,
           });

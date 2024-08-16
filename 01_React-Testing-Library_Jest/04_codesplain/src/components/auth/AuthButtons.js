@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import useUser from '../../hooks/useUser';
+import { Link } from "react-router-dom";
+import useUser from "../../hooks/useUser";
 
 function AuthButtons() {
   const { user, isLoading } = useUser();
@@ -8,10 +8,7 @@ function AuthButtons() {
     return null;
   } else if (user) {
     return (
-      <Link
-        className="block whitespace-nowrap rounded-md px-5 py-2.5 text-sm font-medium border"
-        to="/signout"
-      >
+      <Link className="block whitespace-nowrap rounded-md px-5 py-2.5 text-sm font-medium border" to="/signout">
         Sign Out
       </Link>
     );

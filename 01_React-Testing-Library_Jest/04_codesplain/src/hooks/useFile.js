@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import useSWR from 'swr';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import useSWR from "swr";
 
 async function fileFetcher(url) {
   const res = await axios.get(url);
@@ -9,11 +9,8 @@ async function fileFetcher(url) {
 }
 
 export default function useFile(owner, repoName, path) {
-  const { data, error, isLoading } = useSWR(
-    path && `/api/repositories/${owner}/${repoName}/contents/${path}`,
-    fileFetcher
-  );
-  const [lastFile, setLastFile] = useState({ content: '', path: '_def' });
+  const { data, error, isLoading } = useSWR(path && `/api/repositories/${owner}/${repoName}/contents/${path}`, fileFetcher);
+  const [lastFile, setLastFile] = useState({ content: "", path: "_def" });
 
   useEffect(() => {
     if (data) {

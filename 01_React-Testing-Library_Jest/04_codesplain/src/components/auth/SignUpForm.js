@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import Input from '../forms/Input';
-import Checkbox from '../forms/Checkbox';
-import Button from '../forms/Button';
-import FormError from '../forms/FormError';
-import useSignUp from '../../hooks/useSignUp';
+import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import Input from "../forms/Input";
+import Checkbox from "../forms/Checkbox";
+import Button from "../forms/Button";
+import FormError from "../forms/FormError";
+import useSignUp from "../../hooks/useSignUp";
 
 function SignUpForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [marketingAccept, setMarketingAccept] = useState(false);
 
   const { signUp, error, isLoading, isSignedIn } = useSignUp();
@@ -82,7 +82,7 @@ function SignUpForm() {
 
       <div className="col-span-6 flex items-center">
         <p className="text-sm text-gray-500">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/signin" className="text-gray-700 underline">
             Sign in
           </Link>
