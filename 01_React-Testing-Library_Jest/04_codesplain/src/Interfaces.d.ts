@@ -1,5 +1,7 @@
 // Types and Interfaces
 
+type GitHubRepoUrl = `https://github.com/${string}/${string}`;
+
 interface Repository {
   language?: string;
   stargazers_count?: number;
@@ -11,5 +13,6 @@ interface Repository {
     login?: string;
   };
   name?: string;
-  html_url?: string;
+  // html_url?: string;
+  html_url?: GitHubRepoUr;
 }

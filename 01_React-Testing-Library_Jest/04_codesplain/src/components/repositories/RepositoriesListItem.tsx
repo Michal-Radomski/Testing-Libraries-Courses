@@ -3,7 +3,7 @@ import { MarkGithubIcon } from "@primer/octicons-react";
 import FileIcon from "../tree/FileIcon";
 import RepositoriesSummary from "./RepositoriesSummary";
 
-function RepositoriesListItem({ repository }) {
+function RepositoriesListItem({ repository }: { repository: Repository }): JSX.Element {
   const { full_name, language, description, owner, name } = repository;
 
   return (
@@ -11,7 +11,7 @@ function RepositoriesListItem({ repository }) {
       <FileIcon name={language} className="shrink w-6 pt-1" />
       <div>
         <Link to={`/repositories/${full_name}`} className="text-xl">
-          {owner.login}/<span className="font-bold">{name}</span>
+          {owner?.login}/<span className="font-bold">{name}</span>
         </Link>
         <p className="text-gray-500 italic py-1">{description}</p>
         <RepositoriesSummary repository={repository} />

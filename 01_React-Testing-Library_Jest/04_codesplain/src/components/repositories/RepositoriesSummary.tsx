@@ -1,6 +1,6 @@
 import { StarIcon } from "@primer/octicons-react";
 
-function RepositoriesSummary({ repository }) {
+function RepositoriesSummary({ repository }: { repository: Repository }): JSX.Element {
   const { stargazers_count, open_issues, forks, language } = repository;
 
   return (

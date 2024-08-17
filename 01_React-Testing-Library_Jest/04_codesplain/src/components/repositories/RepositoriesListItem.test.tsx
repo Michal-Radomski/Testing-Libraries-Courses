@@ -30,6 +30,7 @@ test("shows a link to the github homepage for this repository", async (): Promis
   const link = screen.getByRole("link", {
     name: /github repository/i,
   }) as HTMLLinkElement;
+
   expect(link).toHaveAttribute("href", repository.html_url);
 });
 
