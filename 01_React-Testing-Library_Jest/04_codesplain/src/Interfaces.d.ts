@@ -17,3 +17,7 @@ interface Repository {
   // html_url?: string;
   html_url?: GitHubRepoUr;
 }
+
+interface ObjectI {
+  [key: string]: string | string[];
+}

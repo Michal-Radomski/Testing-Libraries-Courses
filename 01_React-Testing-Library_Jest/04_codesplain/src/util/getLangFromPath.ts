@@ -1,4 +1,4 @@
-const languages = {
+const languages: ObjectI = {
   javascript: ["js", "jsx"],
   typescript: ["ts", "tsx"],
   json: ["json"],
@@ -10,10 +10,10 @@ const languages = {
   ruby: ["rb"],
 };
 
-export default function getLangFromFile(path) {
+export default function getLangFromFile(path: string): string {
   let lang = "javascript";
   for (let language in languages) {
-    for (let ext of languages[language]) {
+    for (let ext of languages[language as keyof typeof languages]) {
       if (path.endsWith(ext)) {
         lang = language;
       }
