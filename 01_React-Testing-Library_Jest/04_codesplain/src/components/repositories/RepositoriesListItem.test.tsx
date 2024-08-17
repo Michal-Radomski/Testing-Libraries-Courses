@@ -23,7 +23,7 @@ function renderComponent(): { repository: Repository } {
 }
 
 test("shows a link to the github homepage for this repository", async (): Promise<void> => {
-  const { repository } = renderComponent();
+  const { repository }: { repository: Repository } = renderComponent();
 
   (await screen.findByRole("img", { name: "Javascript" })) as HTMLImageElement;
 

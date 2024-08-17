@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AuthButtons from "./auth/AuthButtons";
 import SearchBar from "./search/SearchBar";
 
-function Header() {
+function Header(): JSX.Element {
   return (
     <header aria-label="Site Header" className="bg-gray-100">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">

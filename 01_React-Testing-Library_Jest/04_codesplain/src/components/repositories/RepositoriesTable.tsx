@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 
-function RepositoriesTable({ label, repositories, id }) {
+function RepositoriesTable({
+  label,
+  repositories,
+  id,
+}: {
+  label: string;
+  repositories: Repository[];
+  id: string;
+}): JSX.Element {
   const rendered =
     repositories &&
-    repositories.map((repo, i) => {
+    (repositories.map((repo) => {
       return (
         <div key={repo.id} className="p-0.5">
           <Link className="text-blue-500" to={`/repositories/${repo.full_name}`}>
@@ -11,7 +19,7 @@ function RepositoriesTable({ label, repositories, id }) {
           </Link>
         </div>
       );
-    });
+    }) as JSX.Element[]);
 
   return (
     <div className="border p-4 rounded">

@@ -1,4 +1,4 @@
-function Hero() {
+function Hero(): JSX.Element {
   return (
     <section className="bg-gray-900 text-white">
       <div className="mx-auto max-w-screen-xl px-4 py-48">

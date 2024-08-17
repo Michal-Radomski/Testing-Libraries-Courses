@@ -3,6 +3,7 @@
 type GitHubRepoUrl = `https://github.com/${string}/${string}`;
 
 interface Repository {
+  id?: string;
   language?: string;
   stargazers_count?: number;
   forks?: number;

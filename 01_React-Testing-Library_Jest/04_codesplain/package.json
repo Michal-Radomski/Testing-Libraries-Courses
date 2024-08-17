@@ -31,8 +31,7 @@
     "react-scripts": "5.0.1",
     "react-split": "^2.0.14",
     "swr": "^2.0.0",
-    "validate.js": "^0.13.1",
-    "web-vitals": "^2.1.4"
+    "validate.js": "^0.13.1"
   },
   "prisma": {
     "schema": "server/prisma/schema.prisma"
@@ -42,8 +41,7 @@
     "start:client": "BROWSER=NONE react-scripts start",
     "start:server": "nodemon --watch server server/index.mjs",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
