@@ -1,6 +1,6 @@
 import SignUpForm from "../components/auth/SignUpForm";
 
-function SignUpRoute() {
+function SignUpRoute(): JSX.Element {
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-body lg:grid-cols-12 w-full">

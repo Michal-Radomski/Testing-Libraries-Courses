@@ -1,12 +1,12 @@
 import useSWR, { mutate } from "swr";
 import axios from "axios";
 
-async function signOut(path) {
+async function signOut(path: string) {
   try {
     const { data } = await axios.get(path);
     mutate("/api/user");
     return data;
-  } catch (err) {
+  } catch (err: any) {
     if (err.response) {
       throw err.response.data;
     } else {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import useSWR from "swr";
 
-async function userFetcher(url) {
+async function userFetcher(url: string) {
   const res = await axios.get(url);
 
   return res.data;

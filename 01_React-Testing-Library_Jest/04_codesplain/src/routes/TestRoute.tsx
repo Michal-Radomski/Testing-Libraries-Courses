@@ -1,4 +1,4 @@
-function TestRoute() {
+function TestRoute(): JSX.Element {
   return <div>TestRoute</div>;
 }
 

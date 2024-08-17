@@ -1,6 +1,6 @@
 import SignInForm from "../components/auth/SignInForm";
 
-function SignInRoute() {
+function SignInRoute(): JSX.Element {
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-body lg:grid-cols-12">

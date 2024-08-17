@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
 import useSignOut from "../hooks/useSignOut";
 
-function SignOutRoute() {
-  const [shouldNavigate, setShouldNavigate] = useState(false);
+function SignOutRoute(): JSX.Element {
+  const [shouldNavigate, setShouldNavigate] = React.useState<boolean>(false);
   const { isSignedOut } = useSignOut();
 
-  useEffect(() => {
-    let timeout;
+  React.useEffect(() => {
+    let timeout: NodeJS.Timeout;
     if (isSignedOut) {
       timeout = setTimeout(() => setShouldNavigate(true), 2000);
     }

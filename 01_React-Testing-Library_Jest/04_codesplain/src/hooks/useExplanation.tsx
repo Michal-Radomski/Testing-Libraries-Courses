@@ -2,7 +2,7 @@ import axios from "axios";
 import useSWR from "swr";
 import getLangFromPath from "../util/getLangFromPath";
 
-async function explanationFetcher([url, { text, path }]) {
+async function explanationFetcher([url, { text, path }]: [string, { text: string; path: string }]) {
   const { data } = await axios.post(url, {
     text,
     language: getLangFromPath(path),
@@ -12,7 +12,7 @@ async function explanationFetcher([url, { text, path }]) {
   return choice.text.trim();
 }
 
-export default function useExplanation({ text, path }) {
+export default function useExplanation({ text, path }: { text: string; path: string }) {
   const { data, error, isLoading } = useSWR([`/api/explain`, { text, path }], explanationFetcher);
 
   return {

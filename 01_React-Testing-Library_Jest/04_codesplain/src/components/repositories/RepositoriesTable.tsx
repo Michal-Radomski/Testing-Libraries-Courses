@@ -7,7 +7,7 @@ function RepositoriesTable({
 }: {
   label: string;
   repositories: Repository[];
-  id: string;
+  id?: string;
 }): JSX.Element {
   const rendered =
     repositories &&

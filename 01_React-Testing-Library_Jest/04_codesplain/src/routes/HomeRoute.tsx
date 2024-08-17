@@ -2,7 +2,7 @@ import Hero from "../components/Hero";
 import RepositoriesTable from "../components/repositories/RepositoriesTable";
 import useRepositories from "../hooks/useRepositories";
 
-function HomeRoute() {
+function HomeRoute(): JSX.Element {
   const { data: jsRepos } = useRepositories("stars:>10000 language:javascript");
   const { data: tsRepos } = useRepositories("stars:>10000 language:typescript");
   const { data: rustRepos } = useRepositories("stars:>10000 language:rust");

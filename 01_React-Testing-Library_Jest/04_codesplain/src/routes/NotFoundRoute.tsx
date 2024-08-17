@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function NotFound() {
+function NotFound(): JSX.Element {
   return (
     <div className="grid mt-40 px-4 bg-white place-content-center">
       <div className="text-center">

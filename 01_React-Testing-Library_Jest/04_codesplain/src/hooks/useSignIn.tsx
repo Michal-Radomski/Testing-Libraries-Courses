@@ -1,11 +1,11 @@
 import useSWRMutation from "swr/mutation";
 import axios from "axios";
 
-async function signIn(_, { arg }) {
+async function signIn(_: any, { arg }: ObjectI) {
   try {
     const { data } = await axios.post("/api/auth/signin", arg);
     return data;
-  } catch (err) {
+  } catch (err: any) {
     if (err.response) {
       throw err.response.data;
     } else {
