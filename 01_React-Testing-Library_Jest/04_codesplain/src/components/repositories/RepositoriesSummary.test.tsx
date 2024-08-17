@@ -2,13 +2,6 @@ import { screen, render } from "@testing-library/react";
 
 import RepositoriesSummary from "./RepositoriesSummary";
 
-interface Repository {
-  language: string;
-  stargazers_count: number;
-  forks: number;
-  open_issues: number;
-}
-
 test("displays information about the repository", (): void => {
   const repository: Repository = {
     language: "Javascript",
