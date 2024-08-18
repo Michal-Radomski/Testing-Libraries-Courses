@@ -1,23 +1,24 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { DefaultBodyType, PathParams, ResponseComposition, RestContext, RestRequest } from "msw";
 
 import HomeRoute from "./HomeRoute";
-// import { createServer } from '../test/server';
+import { createServer } from "../test/server";
 
-// createServer([
-//   {
-//     path: '/api/repositories',
-//     res: (req) => {
-//       const language = req.url.searchParams.get('q').split('language:')[1];
-//       return {
-//         items: [
-//           { id: 1, full_name: `${language}_one` },
-//           { id: 2, full_name: `${language}_two` },
-//         ],
-//       };
-//     },
-//   },
-// ]);
+createServer([
+  {
+    path: "/api/repositories",
+    res: (req: RestRequest<never, PathParams<string>>, _res: ResponseComposition<DefaultBodyType>, _ctx: RestContext) => {
+      const language = req.url.searchParams.get("q")?.split("language:")[1];
+      return {
+        items: [
+          { id: 1, full_name: `${language}_one` },
+          { id: 2, full_name: `${language}_two` },
+        ],
+      };
+    },
+  },
+]);
 
 test("renders two links for each language", async (): Promise<void> => {
   render(
