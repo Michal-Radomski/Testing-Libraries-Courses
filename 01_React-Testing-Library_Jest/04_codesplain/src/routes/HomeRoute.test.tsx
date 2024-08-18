@@ -33,9 +33,9 @@ test("renders two links for each language - V1 - test", async (): Promise<void> 
   const languages: string[] = ["javascript", "typescript", "rust", "go", "python", "java"];
   for (let language of languages) {
     // For each language, make sure we see two links
-    const links = await screen.findAllByRole("link", {
+    const links = (await screen.findAllByRole("link", {
       name: new RegExp(`${language}_`),
-    });
+    })) as HTMLLinkElement[];
 
     expect(links).toHaveLength(2);
     expect(links[0]).toHaveTextContent(`${language}_one`);
@@ -56,9 +56,9 @@ it("renders two links for each language - V2 - it", async (): Promise<void> => {
   const languages = ["javascript", "typescript", "rust", "go", "python", "java"];
   for (let language of languages) {
     // For each language, make sure we see two links
-    const links = await screen.findAllByRole("link", {
+    const links = (await screen.findAllByRole("link", {
       name: new RegExp(`${language}_`),
-    });
+    })) as HTMLLinkElement[];
 
     expect(links).toHaveLength(2);
     expect(links[0]).toHaveTextContent(`${language}_one`);

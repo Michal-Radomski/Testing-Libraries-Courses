@@ -22,11 +22,11 @@ interface ServerConfig {
   ) => MaybePromise<MockedResponse<DefaultBodyType>>;
 }
 
-export function createServer(handlerConfig: [ServerConfig]): void {
-  const handlers = handlerConfig.map((config) => {
+export function createServer(handlerConfig: ServerConfig[]): void {
+  const handlers = handlerConfig.map((config: ServerConfig) => {
     // console.log("config:", config);
 
-    const method = (config?.method! || "get") as string;
+    const method = (config?.method || "get") as string;
 
     return (rest as any)[method](
       config.path,
