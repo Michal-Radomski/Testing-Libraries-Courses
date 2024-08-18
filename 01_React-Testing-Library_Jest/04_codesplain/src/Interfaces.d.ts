@@ -1,3 +1,4 @@
+// Todo: Need to be fixed?
 // Types and Interfaces
 
 declare module "@exuanbo/file-icons-js/dist/js/file-icons";
@@ -35,4 +36,13 @@ interface Folder extends Entry {
 
 interface File extends Entry {
   path?: string;
+  content?: string;
+}
+
+interface Selection {
+  text: string;
+  line: number;
+  path: string;
+  editor: React.MemoExoticComponent;
+  domNode: ReactNode;
 }

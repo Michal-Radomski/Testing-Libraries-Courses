@@ -1,11 +1,12 @@
 import useExplanation from "../../hooks/useExplanation";
 
-function ExplanationPopup({ selection, onClose }) {
+function ExplanationPopup({ selection, onClose }: { selection: any; onClose: Function }): JSX.Element {
+  // console.log("selection:", selection);
   const { explanation, isLoading, error } = useExplanation(selection);
 
   let content;
   if (isLoading) {
-    content = "Loading...";
+    content = <div>Loading...</div>;
   } else if (error) {
     content = error.message;
   } else if (explanation) {

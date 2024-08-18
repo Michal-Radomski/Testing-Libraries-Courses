@@ -2,18 +2,28 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import ExplanationPanel from "./ExplanationPopup";
 
-function ExplanationList({ editorRef, selections, onExplanationClose }) {
-  const [widgets, setWidgets] = useState([]);
+function ExplanationList({
+  editorRef,
+  selections,
+  onExplanationClose,
+}: {
+  editorRef: React.MutableRefObject<any>;
+  selections: Selection[];
+  onExplanationClose: Function;
+}) {
+  const [widgets, setWidgets] = useState<Selection[]>([]);
+  // console.log(widgets);
+  console.log(editorRef);
 
   useEffect(() => {
-    const updateWidgets = (widgets) => {
+    const updateWidgets = (widgets: Selection[]) => {
       widgets
-        .filter((w) => !selections.find((s) => s.line === w.line))
+        .filter((w) => !selections.find((s: Selection) => s.line === w.line))
         .forEach((w) => {
           editorRef.current.removeContentWidget(w);
         });
 
-      const updatedWidgets = selections.map((explanation) => {
+      const updatedWidgets = selections.map((explanation: Selection) => {
         const existingWidget = widgets.find((w) => w.line === explanation.line);
         if (existingWidget) {
           return existingWidget;
@@ -23,9 +33,9 @@ function ExplanationList({ editorRef, selections, onExplanationClose }) {
         return widget;
       });
 
-      return updatedWidgets.filter((w) => selections.find((s) => s.line === w.line));
+      return updatedWidgets.filter((w) => selections.find((s: Selection) => s.line === w.line));
     };
-    setWidgets(updateWidgets);
+    setWidgets(updateWidgets as any);
   }, [selections, editorRef]);
 
   const renderedZones = widgets.map((widget) => {
@@ -38,14 +48,14 @@ function ExplanationList({ editorRef, selections, onExplanationClose }) {
   return renderedZones;
 }
 
-function buildWidget(selection) {
+function buildWidget(selection: Selection, _editorRef?: React.MutableRefObject<any>) {
   return {
     ...selection,
     domNode: null,
     getId: function () {
       return `explanation-${selection.line}`;
     },
-    getDomNode: function () {
+    getDomNode: function (this: any) {
       if (!this.domNode) {
         this.domNode = document.createElement("div");
         this.domNode.classList.add("z-50");

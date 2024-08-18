@@ -1,7 +1,7 @@
 import { ChevronRightIcon } from "@primer/octicons-react";
 
-function Breadcrumbs({ path }) {
-  const pathParts = path.split("/").filter((p) => p);
+function Breadcrumbs({ path }: { path: string }): JSX.Element {
+  const pathParts = path.split("/").filter((p: string) => p);
 
   const renderedPaths = pathParts.map((part, i) => {
     return (

@@ -1,8 +1,7 @@
-import React from "react";
 import MonacoEditor from "@monaco-editor/react";
 import getLangFromPath from "../../util/getLangFromPath";
 
-function Editor({ file, onExplainRequest }) {
+function Editor({ file, onExplainRequest }: { file: File; onExplainRequest: Function }): JSX.Element {
   return (
     <div className="relative pt-1" style={{ backgroundColor: "#1e1e1e" }}>
       <MonacoEditor
@@ -10,7 +9,7 @@ function Editor({ file, onExplainRequest }) {
         theme="vs-dark"
         path={file.path}
         defaultValue={file.content}
-        defaultLanguage={getLangFromPath(file.path)}
+        defaultLanguage={getLangFromPath(file.path!)}
         options={{
           minimap: { enabled: false },
           glyphMargin: true,
@@ -19,22 +18,22 @@ function Editor({ file, onExplainRequest }) {
         onValidate={() => {}}
         onMount={(editor) => {
           // For debugging
-          window.ed = editor;
+          (window as any).ed = editor;
 
           const explainCode = () => {
             const selectedRange = editor.getSelection();
-            const text = editor.getModel().getValueInRange(selectedRange);
+            const text = editor.getModel()?.getValueInRange(selectedRange!);
 
             onExplainRequest({
-              path: editor.getModel().uri.path,
+              path: editor.getModel()?.uri.path,
               text,
               editor,
-              line: selectedRange.endLineNumber,
+              line: selectedRange?.endLineNumber,
             });
           };
 
           editor.addOverlayWidget({
-            domNode: null,
+            // domNode: null,
             getId: () => "explain-code-widget",
             getDomNode: () => {
               const { height } = editor.getContainerDomNode().getBoundingClientRect();
@@ -57,8 +56,8 @@ function Editor({ file, onExplainRequest }) {
             id: "explain-code",
             label: "Explain This Code",
             keybindings: [],
-            precondition: null,
-            keybindingContext: null,
+            precondition: undefined,
+            keybindingContext: undefined,
             contextMenuGroupId: "modification",
             contextMenuOrder: 1,
             run: explainCode,
