@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { DefaultBodyType, PathParams, ResponseComposition, RestContext, RestRequest } from "msw";
+import { DefaultBodyType, MockedResponse, PathParams, ResponseComposition, RestContext, RestRequest } from "msw";
 
 import HomeRoute from "./HomeRoute";
-import { createServer } from "../test/server";
+import { createServer, MaybePromise } from "../test/server";
 
 createServer([
   {
@@ -15,7 +15,7 @@ createServer([
           { id: 1, full_name: `${language}_one` },
           { id: 2, full_name: `${language}_two` },
         ],
-      };
+      } as unknown as MaybePromise<MockedResponse<DefaultBodyType>>;
     },
   },
 ]);

@@ -10,6 +10,8 @@ import {
   RestRequest,
 } from "msw";
 
+export type MaybePromise<T> = T | Promise<T>;
+
 interface ServerConfig {
   method?: string;
   path: string;
