@@ -1,0 +1,31 @@
+The difference between `it()` and `test()` in Jest, a popular testing framework for JavaScript applications including React, is minimal as they serve the same purpose. Both functions are used to define test cases, and they can be used interchangeably. The primary distinction lies in readability and stylistic preference.
+
+### Key Points
+
+- **Interchangeability**: `it()` and `test()` are functionally identical. You can use either to write your tests without affecting the outcome or functionality of the tests themselves. For example, both of the following are valid:
+
+  ```javascript
+  it('should do something', () => {
+    // test implementation
+  });
+
+  test('should do something', () => {
+    // test implementation
+  });
+  ```
+
+- **Readability**: The choice between `it()` and `test()` often comes down to personal or team preference. Some developers prefer `it()` for its readability in describing behavior (e.g., "it should render correctly"), while others may favor `test()` for its straightforwardness in indicating that a test is being conducted.
+
+- **Familiarity**: The `it()` function is often used in behavior-driven development (BDD) frameworks, which may make it more familiar to developers coming from those backgrounds. Conversely, `test()` is more explicit about what it does, which may appeal to those who prefer clearer semantics in their code[1][2].
+
+In summary, while both `it()` and `test()` can be used to define tests in Jest, the choice between them is largely a matter of style and preference rather than functionality.
+
+Citations:
+[1] https://stackoverflow.com/questions/45778192/what-is-the-difference-between-it-and-test-in-jest
+[2] https://www.angularminds.com/blog/guide-to-testing-react-applications
+[3] https://www.browserstack.com/guide/unit-testing-of-react-apps-using-jest
+[4] https://www.reddit.com/r/reactjs/comments/15ugd1n/why_unit_testing_react_apps/
+[5] https://daily.dev/blog/react-functional-testing-best-practices
+[6] https://legacy.reactjs.org/docs/testing.html
+[7] https://jestjs.io/docs/tutorial-react
+[8] https://www.linkedin.com/pulse/comprehensive-guide-testing-react-applications-jest-library-tochukwu-aqice
