@@ -6,7 +6,7 @@ import Button from "../forms/Button";
 import FormError from "../forms/FormError";
 import useSignUp from "../../hooks/useSignUp";
 
-function SignUpForm() {
+function SignUpForm(): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -14,14 +14,14 @@ function SignUpForm() {
 
   const { signUp, error, isLoading, isSignedIn } = useSignUp();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
     signUp({
       email,
       password,
       passwordConfirmation,
-    });
+    } as any);
   };
 
   if (isSignedIn) {

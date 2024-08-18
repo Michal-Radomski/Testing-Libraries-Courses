@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser";
 
-function AuthButtons() {
+function AuthButtons(): JSX.Element {
   const { user, isLoading } = useUser();
 
   if (isLoading) {
-    return null;
+    return null as any;
   } else if (user) {
     return (
       <Link className="block whitespace-nowrap rounded-md px-5 py-2.5 text-sm font-medium border" to="/signout">

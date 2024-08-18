@@ -1,7 +1,14 @@
 import classNames from "classnames";
 import { IssueDraftIcon as Spinner } from "@primer/octicons-react";
 
-function Button({ wide, className, children, loading, ...rest }) {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  wide?: boolean; // Optional prop to indicate if the button should be wide
+  className?: string; // Optional CSS class name
+  loading?: boolean; // Optional loading state
+  children: React.ReactNode; // Children can be any valid React node
+}
+
+const Button: React.FC<ButtonProps> = ({ wide, className, children, loading, ...rest }): JSX.Element => {
   const classes = classNames(
     "rounded-md border bg-blue-600 py-3 text-sm font-medium text-white",
     {
@@ -19,6 +26,6 @@ function Button({ wide, className, children, loading, ...rest }) {
       {loading ? spinner : children}
     </button>
   );
-}
+};
 
 export default Button;

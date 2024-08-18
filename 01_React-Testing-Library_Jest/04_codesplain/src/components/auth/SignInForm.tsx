@@ -5,19 +5,19 @@ import Button from "../forms/Button";
 import FormError from "../forms/FormError";
 import useSignIn from "../../hooks/useSignIn";
 
-function SignInForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function SignInForm(): JSX.Element {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const { signIn, error, isLoading, isSignedIn } = useSignIn();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
     signIn({
       email,
       password,
-    });
+    } as any);
   };
 
   if (isSignedIn) {
