@@ -8,7 +8,7 @@ function RepositoriesListItem({ repository }: { repository: Repository }): JSX.E
 
   return (
     <div className="py-3 border-b flex">
-      <FileIcon name={language} className="shrink w-6 pt-1" />
+      <FileIcon name={language!} className="shrink w-6 pt-1" />
       <div>
         <Link to={`/repositories/${full_name}`} className="text-xl">
           {owner?.login}/<span className="font-bold">{name}</span>

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import FileIcon from "./FileIcon";
 
-function File({ file, repoName, owner }) {
+function File({ file, repoName, owner }: { file: File; repoName: string; owner: string }): JSX.Element {
   return (
     <Link
       to={`/repositories/${owner}/${repoName}/${file.path}`}

@@ -1,7 +1,7 @@
 import File from "./File";
 import Folder from "./Folder";
 
-function TreeEntry({ owner, repoName, entry }) {
+function TreeEntry({ owner, repoName, entry }: { owner: string; repoName: string; entry: Entry }): JSX.Element {
   if (entry.type === "dir") {
     return (
       <div className="ml-1.5 my-[3px] text-sm text-gray-200">
@@ -11,7 +11,7 @@ function TreeEntry({ owner, repoName, entry }) {
   } else {
     return (
       <div className="ml-1.5 my-[3px] text-sm text-gray-200">
-        <File file={entry} owner={owner} repoName={repoName} />
+        <File file={entry as File} owner={owner} repoName={repoName} />
       </div>
     );
   }

@@ -1,5 +1,7 @@
 // Types and Interfaces
 
+declare module "@exuanbo/file-icons-js/dist/js/file-icons";
+
 type GitHubRepoUrl = `https://github.com/${string}/${string}`;
 
 interface Repository {
@@ -20,4 +22,17 @@ interface Repository {
 
 interface ObjectI {
   [key: string]: string | string[];
+}
+
+interface Entry {
+  type?: string;
+  name?: string;
+}
+
+interface Folder extends Entry {
+  path?: string;
+}
+
+interface File extends Entry {
+  path?: string;
 }

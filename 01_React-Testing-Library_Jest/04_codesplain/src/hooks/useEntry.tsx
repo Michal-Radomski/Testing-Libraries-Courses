@@ -27,10 +27,10 @@ export default function useEntry({
   path,
   shouldFetch,
 }: {
-  repoName: string;
-  owner: string;
-  path: string;
-  shouldFetch: boolean;
+  repoName?: string;
+  owner?: string;
+  path?: string;
+  shouldFetch?: boolean;
 }) {
   const _shouldFetch = shouldFetch ?? true;
   const { data, error, isLoading } = useSWR(

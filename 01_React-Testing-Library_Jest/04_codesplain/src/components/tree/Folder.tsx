@@ -6,10 +6,10 @@ import { ChevronRightIcon, ChevronDownIcon } from "@primer/octicons-react";
 import TreeEntry from "./TreeEntry";
 import useEntry from "../../hooks/useEntry";
 
-function Folder({ repoName, owner, folder }) {
+function Folder({ repoName, owner, folder }: { repoName: string; owner: string; folder: Folder }): JSX.Element {
   const { "*": path } = useParams();
   const [expanded, setExpanded] = useState(() => {
-    return (path || "").startsWith(folder.path);
+    return (path || "").startsWith(folder.path!);
   });
 
   const { entry, error } = useEntry({
@@ -21,7 +21,7 @@ function Folder({ repoName, owner, folder }) {
     console.error(error);
   }
 
-  let name = "";
+  let name = "" as any;
   if (folder.name) {
     name = (
       <div
@@ -39,7 +39,10 @@ function Folder({ repoName, owner, folder }) {
 
   const childEntries = entry?.entries || [];
   const children =
-    expanded && childEntries.map((entry) => <TreeEntry key={entry.name} owner={owner} repoName={repoName} entry={entry} />);
+    expanded &&
+    childEntries.map((entry: { name: string }) => (
+      <TreeEntry key={entry.name} owner={owner} repoName={repoName} entry={entry as Entry} />
+    ));
 
   return (
     <div>

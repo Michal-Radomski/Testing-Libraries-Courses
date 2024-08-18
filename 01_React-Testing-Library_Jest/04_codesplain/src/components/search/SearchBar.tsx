@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../forms/Input";
 
-function SearchBar() {
+function SearchBar(): JSX.Element {
   const [term, setTerm] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     navigate(`/repositories?q=${term}`);
   };

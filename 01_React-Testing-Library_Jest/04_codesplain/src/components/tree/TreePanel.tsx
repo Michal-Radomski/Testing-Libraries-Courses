@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import TreeEntry from "./TreeEntry";
 import useEntry from "../../hooks/useEntry";
 
-function TreePanel() {
+function TreePanel(): JSX.Element {
   const { owner, repoName } = useParams();
   const { entry, isLoading, error } = useEntry({
     owner,
@@ -11,7 +11,7 @@ function TreePanel() {
   });
 
   if (isLoading) {
-    return null;
+    return null as any;
   } else if (error) {
     return <div>{error.message}</div>;
   }
@@ -22,7 +22,7 @@ function TreePanel() {
         <h1 className="text-xl font-bold text-gray-50">{repoName}</h1>
       </div>
       <div className="h-full overflow-scroll">
-        <TreeEntry entry={entry} owner={owner} repoName={repoName} />
+        <TreeEntry entry={entry} owner={owner!} repoName={repoName!} />
       </div>
     </div>
   );
