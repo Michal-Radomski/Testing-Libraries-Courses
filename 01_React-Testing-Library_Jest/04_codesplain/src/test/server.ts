@@ -22,26 +22,31 @@ interface ServerConfig {
   ) => MaybePromise<MockedResponse<DefaultBodyType>>;
 }
 
-export function createServer(handlerConfig: [ServerConfig]) {
+export function createServer(handlerConfig: [ServerConfig]): void {
   const handlers = handlerConfig.map((config) => {
+    // console.log("config:", config);
+
     const method = (config?.method! || "get") as string;
 
     return (rest as any)[method](
       config.path,
       (req: RestRequest<never, PathParams<string>>, res: ResponseComposition<DefaultBodyType>, ctx: RestContext) => {
+        // console.log("ctx:", ctx);
         return res(ctx.json(config.res(req, res, ctx)));
       }
     );
   }) as Array<RequestHandler>;
-  const server: SetupServer = setupServer(...handlers);
 
-  beforeAll(() => {
+  const server: SetupServer = setupServer(...handlers);
+  // console.log("server:", server);
+
+  beforeAll((): void => {
     server.listen();
   });
-  afterEach(() => {
+  afterEach((): void => {
     server.resetHandlers();
   });
-  afterAll(() => {
+  afterAll((): void => {
     server.close();
   });
 }
