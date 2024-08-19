@@ -41,7 +41,8 @@
     "start:client": "BROWSER=NONE react-scripts start",
     "start:server": "nodemon --watch server server/index.mjs",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache"
   },
   "eslintConfig": {
     "extends": [

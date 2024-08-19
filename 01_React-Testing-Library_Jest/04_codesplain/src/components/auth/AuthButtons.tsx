@@ -4,6 +4,8 @@ import useUser from "../../hooks/useUser";
 function AuthButtons(): JSX.Element {
   const { user, isLoading } = useUser();
 
+  // debugger
+
   if (isLoading) {
     return null as any;
   } else if (user) {

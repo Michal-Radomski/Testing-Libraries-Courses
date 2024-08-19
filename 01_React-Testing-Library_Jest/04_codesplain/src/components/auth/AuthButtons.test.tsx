@@ -14,6 +14,10 @@ async function renderComponent(): Promise<void> {
       </MemoryRouter>
     </SWRConfig>
   );
+
+  // const links = (await screen.findAllByRole("link")) as HTMLLinkElement[];
+  // console.log("links.length:", links.length);
+
   await screen.findAllByRole("link");
 }
 
@@ -92,4 +96,14 @@ describe("when user is not signed in", (): void => {
 
     expect(signOutButton).not.toBeInTheDocument();
   });
+
+  // test.only("sign out is not visible - V2 - only", async (): Promise<void> => {
+  //   await renderComponent();
+
+  //   const signOutButton = screen.queryByRole("link", {
+  //     name: /sign out/i,
+  //   }) as HTMLLinkElement;
+
+  //   expect(signOutButton).not.toBeInTheDocument();
+  // });
 });
