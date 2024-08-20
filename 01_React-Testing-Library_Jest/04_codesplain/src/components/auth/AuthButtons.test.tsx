@@ -8,7 +8,15 @@ import AuthButtons from "./AuthButtons";
 
 async function renderComponent(): Promise<void> {
   render(
-    <SWRConfig value={{ provider: () => new Map() }}>
+    <SWRConfig
+      value={{
+        provider: () => {
+          const map: Map<any, any> = new Map();
+          // console.log("map:", map);
+          return map;
+        },
+      }}
+    >
       <MemoryRouter>
         <AuthButtons />
       </MemoryRouter>
@@ -27,6 +35,7 @@ describe("when user is signed in", (): void => {
     {
       path: "/api/user",
       res: () => {
+        // console.log("User is Logged In!");
         return { user: { id: 3, email: "asdf@asdf.com" } } as unknown as MaybePromise<MockedResponse<DefaultBodyType>>;
       },
     },
@@ -65,6 +74,7 @@ describe("when user is not signed in", (): void => {
     {
       path: "/api/user",
       res: () => {
+        // console.log("User is Not Logged In!");
         return { user: null } as unknown as MaybePromise<MockedResponse<DefaultBodyType>>;
       },
     },
