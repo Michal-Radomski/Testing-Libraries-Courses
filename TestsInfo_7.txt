@@ -1,0 +1,95 @@
+Test-Driven Development (TDD), Behavior-Driven Development (BDD), and Domain-Driven Design (DDD) are three distinct methodologies in software development, each with its own focus and practices.
+
+## Test-Driven Development (TDD)
+
+TDD is a development practice that emphasizes writing tests before writing the corresponding code. The core cycle of TDD involves:
+
+1. **Write a test** for a new feature.
+2. **Run the test**, which should fail since the feature isn't implemented yet (red).
+3. **Write the minimum code** necessary to pass the test (green).
+4. **Refactor** the code while keeping it functional.
+
+### Example in TypeScript
+
+```typescript
+// Function to be tested
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+// TDD Test
+describe('add function', () => {
+    it('should return the sum of two numbers', () => {
+        expect(add(2, 3)).toBe(5);
+    });
+});
+```
+
+## Behavior-Driven Development (BDD)
+
+BDD builds on TDD by focusing on the behavior of the application from the user's perspective. It encourages collaboration between developers, testers, and non-technical stakeholders. Tests are often written in a natural language format, typically using the Given-When-Then structure.
+
+### Example in TypeScript
+
+```typescript
+// Function to be tested
+function multiply(a: number, b: number): number {
+    return a * b;
+}
+
+// BDD Test
+describe('multiply function', () => {
+    it('Given two numbers, When multiplied, Then return their product', () => {
+        expect(multiply(2, 3)).toBe(6);
+    });
+});
+```
+
+## Domain-Driven Design (DDD)
+
+DDD is a design methodology that focuses on modeling complex software systems based on the business domain. It emphasizes collaboration between technical and domain experts to create a shared understanding of the system's requirements and structure.
+
+### Example in TypeScript
+
+```typescript
+// Domain Model for a User
+class User {
+    constructor(public id: number, public name: string) {}
+}
+
+// Repository pattern for User
+class UserRepository {
+    private users: User[] = [];
+
+    addUser(user: User): void {
+        this.users.push(user);
+    }
+
+    findUserById(id: number): User | undefined {
+        return this.users.find(user => user.id === id);
+    }
+}
+
+// Example Usage
+const userRepository = new UserRepository();
+userRepository.addUser(new User(1, 'Alice'));
+const user = userRepository.findUserById(1);
+console.log(user?.name); // Outputs: Alice
+```
+
+## Summary of Differences
+
+- **TDD** focuses on writing tests first to ensure code quality and functionality.
+- **BDD** emphasizes collaboration and defining requirements in a user-friendly language.
+- **DDD** centers around understanding and modeling complex business domains, ensuring that the software reflects the business needs.
+
+These methodologies can be used in conjunction, where DDD helps define the domain, BDD captures the behavior, and TDD ensures the implementation meets the defined tests.
+
+Citations:
+[1] https://www.browserstack.com/guide/tdd-vs-bdd-vs-atdd
+[2] https://stackoverflow.com/questions/4395469/tdd-and-bdd-differences
+[3] https://junedang.com/understand-the-fundamentals-of-tdd-ddd-and-bdd-a-comprehensive-guide-to-these-key-software-development-concepts/
+[4] https://dev.to/me_janki/test-driven-development-tdd-vs-behavior-driven-development-bdd-vs-domain-driven-design-ddd-26b7
+[5] https://www.linkedin.com/pulse/tdd-vs-bdd-ddd-vitalii-serdiuk
+[6] https://www.browserstack.com/guide/data-driven-framework-in-selenium
+[7] https://laracasts.com/discuss/channels/testing/tdd-vs-bdd-vs-ddd
