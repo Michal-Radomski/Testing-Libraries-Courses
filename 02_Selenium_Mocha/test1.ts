@@ -1,4 +1,4 @@
-import { Builder, Browser, By, Key, until, WebDriver } from "selenium-webdriver";
+import { Builder, Browser, By, Key, until, WebDriver, WebElement } from "selenium-webdriver";
 
 const pause = (time: number): Promise<number> => new Promise((resolve) => setTimeout(resolve, time));
 
@@ -12,7 +12,8 @@ const pause = (time: number): Promise<number> => new Promise((resolve) => setTim
     await pause(2500);
     await driver.findElement(By.name("q")).sendKeys("webdriver", Key.RETURN);
     await pause(2500);
-    await driver.wait(until.titleIs("webdriver - Google Search"), 10000);
+    const results: WebElement = await driver.wait(until.titleIs("webdriver - Google Search"), 10000);
+    console.log("results:", results);
     await pause(2500);
   } catch (error) {
     console.log("error:", error);
