@@ -1,0 +1,19 @@
+{
+  "name": "02_selenium_mocha",
+  "version": "1.0.0",
+  "main": "test1.ts",
+  "scripts": {
+    "start": "nodemon test1.ts"
+  },
+  "keywords": [],
+  "author": "Michal Radomski <michalra@op.pl>",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "selenium-webdriver": "^4.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.1",
+    "@types/selenium-webdriver": "^4.1.26"
+  }
+}
