@@ -15,6 +15,15 @@ const pause = (time: number): Promise<number> => new Promise((resolve) => setTim
     const results: WebElement = await driver.wait(until.titleIs("webdriver - Google Search"), 10000);
     console.log("results:", results);
     await pause(2500);
+
+    await driver.navigate().to("https:onet.pl");
+    await driver.sleep(2500);
+    await driver.navigate().back();
+    await driver.sleep(2500);
+    await driver.navigate().forward();
+    await driver.sleep(2500);
+    await driver.navigate().refresh();
+    await driver.sleep(2500);
   } catch (error) {
     console.log("error:", error);
   } finally {
