@@ -1,6 +1,7 @@
 import { Builder, By, Key, until, WebDriver } from "selenium-webdriver";
 import { expect } from "chai";
 
+//* Chai test
 describe("Google Search", function (): void {
   let driver: WebDriver;
 

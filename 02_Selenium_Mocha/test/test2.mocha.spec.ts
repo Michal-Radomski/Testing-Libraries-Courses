@@ -2,6 +2,7 @@ import assert from "assert";
 import { WebDriver, By, Builder, Browser, IRectangle, WebElement, ThenableWebDriver } from "selenium-webdriver";
 import Firefox from "selenium-webdriver/firefox";
 
+//* Elements_1
 describe("Element Information Test", function (): void {
   let driver: WebDriver;
 
@@ -64,6 +65,7 @@ describe("Element Information Test", function (): void {
   after(async () => await driver.quit());
 });
 
+//* Elements_2
 describe("Element Information Test", function (): void {
   let driver: WebDriver;
 
@@ -91,6 +93,7 @@ describe("Element Information Test", function (): void {
   after(async () => await driver.quit());
 });
 
+//* Service Test
 describe("Service Test", function (): void {
   it("Default service", async function (): Promise<void> {
     const service: Firefox.ServiceBuilder = new Firefox.ServiceBuilder();

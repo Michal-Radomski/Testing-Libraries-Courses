@@ -1,6 +1,7 @@
 import assert from "assert";
 import { By, Browser, until, Builder, WebDriver } from "selenium-webdriver";
 
+//* Waits
 describe("Waits", async function (): Promise<void> {
   let driver: WebDriver;
 

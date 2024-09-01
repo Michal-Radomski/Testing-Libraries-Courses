@@ -2,6 +2,7 @@ import { Builder, Browser, By, Key, until, WebDriver, WebElement } from "seleniu
 
 const pause = (time: number): Promise<number> => new Promise((resolve) => setTimeout(resolve, time));
 
+//* Test_1
 (async function test_1(): Promise<void> {
   // const driver: WebDriver = await new Builder().forBrowser(Browser.CHROME).build();
   const driver: WebDriver = await new Builder().forBrowser(Browser.FIREFOX).build();

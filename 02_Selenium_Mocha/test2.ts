@@ -1,5 +1,6 @@
 import { Builder, Browser, By } from "selenium-webdriver";
 
+//* Test_2
 (async function test_2(): Promise<void> {
   const driver = await new Builder().forBrowser(Browser.FIREFOX).build();
   try {
