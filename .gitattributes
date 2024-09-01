@@ -1,5 +1,5 @@
-*.env.test linguist-detectable=true
-*.env.test linguist-language=Dotenv
+*.env linguist-detectable=true
+*.env linguist-language=Dotenv
 
 # *.json linguist-detectable=true
 # *.json linguist-language=JSON
