@@ -1,7 +1,7 @@
 import { Builder, By, Key, until, WebDriver } from "selenium-webdriver";
 import { expect } from "chai";
 
-describe("Google Search", function () {
+describe("Google Search", function (): void {
   let driver: WebDriver;
 
   before(async function () {

@@ -1,16 +1,16 @@
 import assert from "assert";
 import { By, Browser, until, Builder, WebDriver } from "selenium-webdriver";
 
-describe("Waits", async function () {
+describe("Waits", async function (): Promise<void> {
   let driver: WebDriver;
 
-  before(async function () {
+  before(async function (): Promise<void> {
     driver = new Builder().forBrowser(Browser.FIREFOX).build();
   });
 
   after(async () => await driver.quit());
 
-  it("fail", async function () {
+  it("fail", async function (): Promise<void> {
     await driver.get("https://www.selenium.dev/selenium/web/dynamic.html");
     await driver.findElement(By.id("adder")).click();
 
@@ -19,7 +19,7 @@ describe("Waits", async function () {
     }, Error);
   });
 
-  it("sleep", async function () {
+  it("sleep", async function (): Promise<void> {
     await driver.get("https://www.selenium.dev/selenium/web/dynamic.html");
     await driver.findElement(By.id("adder")).click();
 
@@ -29,7 +29,7 @@ describe("Waits", async function () {
     assert.equal(await added.getAttribute("class"), "redbox");
   });
 
-  it("implicit", async function () {
+  it("implicit", async function (): Promise<void> {
     await driver.manage().setTimeouts({ implicit: 2000 });
     await driver.get("https://www.selenium.dev/selenium/web/dynamic.html");
     await driver.findElement(By.id("adder")).click();
@@ -39,7 +39,7 @@ describe("Waits", async function () {
     assert.equal(await added.getAttribute("class"), "redbox");
   });
 
-  it("explicit", async function () {
+  it("explicit", async function (): Promise<void> {
     await driver.get("https://www.selenium.dev/selenium/web/dynamic.html");
     let revealed = await driver.findElement(By.id("revealed"));
     await driver.findElement(By.id("reveal")).click();
