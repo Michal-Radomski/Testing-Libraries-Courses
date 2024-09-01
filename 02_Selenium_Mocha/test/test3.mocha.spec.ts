@@ -34,3 +34,25 @@ describe("Drag and Drop", function (): void {
     assert.deepStrictEqual("dropped", result);
   });
 });
+
+//* Actions - Double Click
+describe("Double click", function (): void {
+  let driver: WebDriver;
+
+  before(async function (): Promise<void> {
+    driver = new Builder().forBrowser("firefox").build();
+  });
+
+  after(async (): Promise<void> => await driver.quit());
+
+  it("Double-click on an element", async function (): Promise<void> {
+    await driver.get("https://www.selenium.dev/selenium/web/mouse_interaction.html");
+    const clickable: WebElementPromise = driver.findElement(By.id("clickable"));
+    const actions: Actions = driver.actions({ async: true });
+    await actions.doubleClick(clickable).perform();
+
+    await driver.sleep(500);
+    const status: string = await driver.findElement(By.id("click-status")).getText();
+    assert.deepStrictEqual(status, `double-clicked`);
+  });
+});
