@@ -1,5 +1,5 @@
 import assert from "assert";
-import { By, Browser, until, Builder, WebDriver } from "selenium-webdriver";
+import { By, Browser, until, Builder, WebDriver, WebElement } from "selenium-webdriver";
 
 //* Waits
 describe("Waits", async function (): Promise<void> {
@@ -25,7 +25,7 @@ describe("Waits", async function (): Promise<void> {
     await driver.findElement(By.id("adder")).click();
 
     await driver.sleep(2000);
-    let added = await driver.findElement(By.id("box0"));
+    const added: WebElement = await driver.findElement(By.id("box0"));
 
     assert.equal(await added.getAttribute("class"), "redbox");
   });
@@ -35,14 +35,14 @@ describe("Waits", async function (): Promise<void> {
     await driver.get("https://www.selenium.dev/selenium/web/dynamic.html");
     await driver.findElement(By.id("adder")).click();
 
-    let added = await driver.findElement(By.id("box0"));
+    const added: WebElement = await driver.findElement(By.id("box0"));
 
     assert.equal(await added.getAttribute("class"), "redbox");
   });
 
   it("explicit", async function (): Promise<void> {
     await driver.get("https://www.selenium.dev/selenium/web/dynamic.html");
-    let revealed = await driver.findElement(By.id("revealed"));
+    const revealed: WebElement = await driver.findElement(By.id("revealed"));
     await driver.findElement(By.id("reveal")).click();
     await driver.wait(until.elementIsVisible(revealed), 2000);
     await revealed.sendKeys("Displayed");
