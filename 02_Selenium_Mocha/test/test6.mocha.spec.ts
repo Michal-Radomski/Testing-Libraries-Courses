@@ -11,6 +11,7 @@ const pdfMagicNumber: string = "JVBER";
 const imgMagicNumber: string = "iVBOR";
 let base64Code: string;
 
+//* Interactions - Windows
 describe("Interactions - Windows", function (): void {
   let driver: WebDriver;
 
@@ -24,10 +25,13 @@ describe("Interactions - Windows", function (): void {
     await driver.get("https://www.selenium.dev/selenium/web/alerts.html");
 
     const base64 = (await driver.printPage({ pageRanges: ["1-2"] } as any)) as unknown as string;
+    // console.log({ base64 });
     // page can be saved as a PDF as below
     // await fs.writeFileSync('./test.pdf', base64, 'base64');
 
     base64Code = base64.slice(startIndex, endIndex);
+    // console.log({ base64Code });
+
     assert.strictEqual(base64Code, pdfMagicNumber);
   });
 
@@ -50,6 +54,7 @@ describe("Interactions - Windows", function (): void {
     // save screenshot as below
     // await fs.writeFileSync('./image.png', encodedString, 'base64');
     base64Code = encodedString.slice(startIndex, endIndex) as string;
+    // console.log({ base64Code });
     assert.strictEqual(base64Code, imgMagicNumber);
   });
 
@@ -61,6 +66,7 @@ describe("Interactions - Windows", function (): void {
     // save screenshot as below
     // await fs.writeFileSync('./image.png', encodedString, 'base64');
     base64Code = encodedString.slice(startIndex, endIndex) as string;
+    // console.log({ base64Code });
     assert.strictEqual(base64Code, imgMagicNumber);
   });
 
