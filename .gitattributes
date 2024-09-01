@@ -1,8 +1,8 @@
 *.env.test linguist-detectable=true
 *.env.test linguist-language=Dotenv
 
-*.json linguist-detectable=true
-*.json linguist-language=JSON
+# *.json linguist-detectable=true
+# *.json linguist-language=JSON
 
-*.prisma linguist-detectable=true
-*.prisma linguist-language=Prisma
+# *.prisma linguist-detectable=true
+# *.prisma linguist-language=Prisma
