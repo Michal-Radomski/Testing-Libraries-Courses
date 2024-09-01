@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "test1.ts",
   "scripts": {
-    "test": "npx mocha **/*spec.ts --timeout 60000",
+    "test:mocha": "npx mocha **/*.mocha.spec.ts --timeout 60000",
+    "test:chai": "npx mocha **/*.chai.spec.ts --timeout 60000",
     "start": "nodemon test1.ts"
   },
   "keywords": [],
@@ -11,9 +12,11 @@
   "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@types/chai": "^4.3.19",
     "@types/mocha": "^10.0.7",
     "@types/node": "^22.5.1",
     "@types/selenium-webdriver": "^4.1.26",
+    "chai": "^4.5.0",
     "mocha": "^10.7.3",
     "selenium-webdriver": "^4.24.0",
     "ts-node": "^10.9.2",
