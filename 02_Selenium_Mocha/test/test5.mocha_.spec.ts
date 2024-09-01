@@ -1,6 +1,7 @@
-import { Builder, By, WebDriver } from "selenium-webdriver";
+import { Browser, Builder, By, until, WebDriver, WebElement } from "selenium-webdriver";
 
 import * as assert from "assert";
+import path from "path";
 
 //* SwitchTo
 describe("Selenium Mocha Test with switchTo", function (): void {
@@ -42,6 +43,37 @@ describe("Selenium Mocha Test with switchTo", function (): void {
 
   after(async function (): Promise<void> {
     await driver.quit(); // Close the browser after tests
+  });
+});
+
+//* File Upload
+describe("File Upload Test", function (): void {
+  let driver: WebDriver;
+
+  before(async function (): Promise<void> {
+    driver = new Builder().forBrowser(Browser.FIREFOX).build();
+  });
+
+  after(async (): Promise<void> => driver.quit());
+
+  it("Should be able to upload a file successfully", async function (): Promise<void> {
+    const image: string = path.resolve("./test/selenium.png");
+    // console.log("image:", image);
+
+    await driver.manage().setTimeouts({ implicit: 5000 });
+
+    // Navigate to URL
+    await driver.get("https://the-internet.herokuapp.com/upload");
+    await driver.sleep(2000);
+    // Upload snapshot
+    await driver.findElement(By.id("file-upload")).sendKeys(image);
+    await driver.findElement(By.id("file-submit")).submit();
+
+    const revealed: WebElement = await driver.findElement(By.id("uploaded-files"));
+    await driver.wait(until.elementIsVisible(revealed), 2000);
+    const data: WebElement = await driver.findElement(By.css("h3"));
+
+    assert.equal(await data.getText(), `File Uploaded!`);
   });
 });
 
