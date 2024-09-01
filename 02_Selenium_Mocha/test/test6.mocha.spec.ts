@@ -1,4 +1,5 @@
-import * as assert from "assert";
+import assert from "assert";
+import fs from "fs";
 import { Builder, By, IRectangle, WebDriver, WebElement } from "selenium-webdriver";
 import firefox from "selenium-webdriver/firefox";
 
@@ -27,7 +28,7 @@ describe("Interactions - Windows", function (): void {
     const base64 = (await driver.printPage({ pageRanges: ["1-2"] } as any)) as unknown as string;
     // console.log({ base64 });
     // page can be saved as a PDF as below
-    // await fs.writeFileSync('./test.pdf', base64, 'base64');
+    await fs.writeFileSync("./test/test.pdf", base64, "base64");
 
     base64Code = base64.slice(startIndex, endIndex);
     // console.log({ base64Code });
@@ -101,6 +102,10 @@ describe("Interactions - Windows", function (): void {
     // Access each dimension individually
     const { width, height }: { width: number; height: number } = await driver.manage().window().getRect();
     console.log({ width, height });
+
+    await driver.manage().window().setRect({ width: 1024, height: 768 });
+    const newWindowSize: IRectangle = await driver.manage().window().getRect();
+    console.log({ newWindowSize });
 
     // Or store the dimensions and query them later
     const rect: IRectangle = await driver.manage().window().getRect();
