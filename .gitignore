@@ -27,3 +27,4 @@ dist/
 Temp/
 notes.txt
 01_React-Testing-Library_Jest/003_materials/
+mochawesome-report/

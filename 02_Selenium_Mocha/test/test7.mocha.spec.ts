@@ -1,5 +1,6 @@
 import * as assert from "assert";
 import { Builder, WebDriver } from "selenium-webdriver";
+import addContext from "mochawesome/addContext";
 
 describe("Selenium Mocha Test with executeScript", function (): void {
   let driver: WebDriver;
@@ -10,6 +11,8 @@ describe("Selenium Mocha Test with executeScript", function (): void {
   });
 
   it("should execute a script and manipulate the DOM", async function (): Promise<void> {
+    await addContext(this as Mocha.Context, new Date().toLocaleDateString());
+
     await driver.get("https://example.com"); // Navigate to the page
 
     await driver.sleep(2000);
