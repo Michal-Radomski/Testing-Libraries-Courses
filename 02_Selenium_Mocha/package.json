@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon test1.ts",
     "start2": "nodemon test2.ts",
-    "test:mocha": "npx mocha **/*.mocha.spec.ts --timeout 60000",
+    "test:mocha": "npx mocha **/*.mocha_.spec.ts --timeout 60000",
     "test:chai": "npx mocha **/*.chai.spec.ts --timeout 60000"
   },
   "keywords": [],
