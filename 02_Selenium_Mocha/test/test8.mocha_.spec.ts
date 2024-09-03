@@ -1,6 +1,7 @@
 import assert from "assert";
 import { Browser, Builder, By, ThenableWebDriver, WebDriver, WebElement } from "selenium-webdriver";
 import Firefox from "selenium-webdriver/firefox";
+import { VirtualAuthenticatorOptions, Transport, Protocol } from "selenium-webdriver/lib/virtual_authenticator";
 
 //* 1
 describe("Page loading strategies", function (): void {
@@ -159,5 +160,29 @@ describe("Cookies", function (): void {
 
     // Delete all cookies
     await driver.manage().deleteAllCookies();
+  });
+});
+
+//* 4.
+describe("Virtual authenticator options", function (): void {
+  let options: VirtualAuthenticatorOptions;
+
+  it("Virtual options", async function (): Promise<void> {
+    options = new VirtualAuthenticatorOptions();
+    options.setIsUserVerified(true);
+    options.setHasUserVerification(true);
+    options.setIsUserConsenting(true);
+    options.setTransport(Transport["USB"]);
+    options.setProtocol(Protocol["U2F"]);
+    options.setHasResidentKey(false);
+    // console.log("options:", options);
+
+    assert(Object.keys(options).length === 6);
+  });
+
+  it("User verified", async function (): Promise<void> {
+    options.setIsUserVerified(true);
+
+    assert((options as any).toDict()["isUserVerified"]);
   });
 });
