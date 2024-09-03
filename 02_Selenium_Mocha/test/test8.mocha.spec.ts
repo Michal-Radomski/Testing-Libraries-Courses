@@ -1,7 +1,11 @@
 import assert from "assert";
-import { Browser, Builder, By, ThenableWebDriver, WebDriver, WebElement } from "selenium-webdriver";
+import { Browser, Builder, By, ThenableWebDriver, until, WebDriver, WebElement } from "selenium-webdriver";
 import Firefox from "selenium-webdriver/firefox";
 import { VirtualAuthenticatorOptions, Transport, Protocol } from "selenium-webdriver/lib/virtual_authenticator";
+
+const Network = require("selenium-webdriver/bidi/network");
+const { AddInterceptParameters } = require("selenium-webdriver/bidi/addInterceptParameters");
+const { InterceptPhase } = require("selenium-webdriver/bidi/interceptPhase");
 
 //* 1
 describe("Page loading strategies", function (): void {
@@ -184,5 +188,77 @@ describe("Virtual authenticator options", function (): void {
     options.setIsUserVerified(true);
 
     assert((options as any).toDict()["isUserVerified"]);
+  });
+});
+
+//* 5
+describe("Network commands", function (): void {
+  let driver: WebDriver;
+  let network: typeof Network;
+
+  beforeEach(async function (): Promise<void> {
+    // @ts-ignore
+    driver = new Builder().forBrowser("firefox").setFirefoxOptions(new Firefox.Options().enableBidi()).build();
+    network = await Network(driver);
+  });
+
+  afterEach(async function (): Promise<void> {
+    await network.close();
+    await driver.quit();
+  });
+
+  xit("can add intercept", async function (): Promise<void> {
+    const intercept = await network.addIntercept(new AddInterceptParameters(InterceptPhase.BEFORE_REQUEST_SENT));
+    assert.notEqual(intercept, null);
+  });
+
+  xit("can remove intercept", async function (): Promise<void> {
+    const network = await Network(driver);
+    const intercept = await network.addIntercept(new AddInterceptParameters(InterceptPhase.BEFORE_REQUEST_SENT));
+    assert.notEqual(intercept, null);
+
+    await network.removeIntercept(intercept);
+  });
+
+  xit("can continue with auth credentials ", async function (): Promise<void> {
+    await network.addIntercept(new AddInterceptParameters(InterceptPhase.AUTH_REQUIRED));
+
+    await network.authRequired(async (event: any) => {
+      await network.continueWithAuth(event.request.request, "admin", "admin");
+    });
+    await driver.get("https://the-internet.herokuapp.com/basic_auth");
+
+    const successMessage = "Congratulations! You must have the proper credentials.";
+
+    const elementMessage = await driver.findElement(By.tagName("p")).getText();
+    assert.equal(elementMessage, successMessage);
+  });
+
+  xit("can continue without auth credentials ", async function (): Promise<void> {
+    await network.addIntercept(new AddInterceptParameters(InterceptPhase.AUTH_REQUIRED));
+
+    await network.authRequired(async (event: any) => {
+      await network.continueWithAuthNoCredentials(event.request.request);
+    });
+
+    await driver.get("https://the-internet.herokuapp.com/basic_auth");
+    const alert = await driver.wait(until.alertIsPresent());
+    // @ts-ignore
+    await alert.dismiss();
+
+    const source = await driver.getPageSource();
+    assert.equal(source.includes("Not authorized"), true);
+  });
+
+  xit("can cancel auth ", async function (): Promise<void> {
+    await network.addIntercept(new AddInterceptParameters(InterceptPhase.AUTH_REQUIRED));
+
+    await network.authRequired(async (event: any) => {
+      await network.cancelAuth(event.request.request);
+    });
+
+    await driver.get("https://the-internet.herokuapp.com/basic_auth");
+    const source = await driver.getPageSource();
+    assert.equal(source.includes("Not authorized"), true);
   });
 });
