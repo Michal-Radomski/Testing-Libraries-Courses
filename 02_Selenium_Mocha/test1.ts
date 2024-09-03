@@ -1,3 +1,4 @@
+import * as assert from "assert";
 import { Builder, Browser, By, Key, until, WebDriver, WebElement } from "selenium-webdriver";
 
 const pause = (time: number): Promise<number> => new Promise((resolve) => setTimeout(resolve, time));
@@ -34,6 +35,34 @@ const pause = (time: number): Promise<number> => new Promise((resolve) => setTim
     await driver.executeScript("console.log('test')");
 
     await driver.sleep(2500);
+  } catch (error) {
+    console.log("error:", error);
+  } finally {
+    await driver.quit();
+  }
+})();
+
+(async function firstTest(): Promise<void> {
+  let driver: WebDriver = null as any;
+
+  try {
+    driver = await new Builder().forBrowser(Browser.FIREFOX).build();
+    await driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+
+    const title = await driver.getTitle();
+    assert.equal("Web form", title);
+
+    await driver.manage().setTimeouts({ implicit: 500 });
+
+    const textBox = await driver.findElement(By.name("my-text"));
+    const submitButton = await driver.findElement(By.css("button"));
+
+    await textBox.sendKeys("Selenium");
+    await submitButton.click();
+
+    const message = await driver.findElement(By.id("message"));
+    const value = await message.getText();
+    assert.equal("Received!", value);
   } catch (error) {
     console.log("error:", error);
   } finally {
