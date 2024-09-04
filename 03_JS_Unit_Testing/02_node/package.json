@@ -1,0 +1,19 @@
+{
+  "name": "02_node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "Maximilian Schwarzmüller",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "vitest": "^0.9.0"
+  }
+}
