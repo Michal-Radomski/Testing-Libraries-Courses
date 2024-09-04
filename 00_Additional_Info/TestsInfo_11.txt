@@ -131,3 +131,72 @@ Citations:
 [6] https://mattermost.com/blog/comparing-javascript-testing-frameworks/
 [7] https://hojaleaks.com/how-to-connect-a-nodejs-api-with-mongodb-and-test-with-postman
 [8] https://www.wearecapicua.com/blog/node-js-testing-frameworks
+
+
+Yes, you can use a similar testing approach for both MongoDB and PostgreSQL in your Express.js applications. The key steps are:
+
+1. **Set up an in-memory database** for testing:
+   - For MongoDB, use `mongodb-memory-server` to create an in-memory MongoDB instance.
+   - For PostgreSQL, use `pg-mem` to create an in-memory PostgreSQL instance.
+
+2. **Write tests using Jest and Supertest**:
+   - Create test files (e.g., `product.test.js`) and write your tests using Jest and Supertest.
+   - Make HTTP requests to your Express app and assert responses using Supertest.
+   - Populate the in-memory database with test data before each test.
+
+3. **Clean up the database after each test**:
+   - Drop the database and close the connection after each test using the `afterEach` or `afterAll` hooks.
+
+Here's a high-level example of how you can structure your tests for both databases:
+
+```javascript
+// MongoDB
+import { connectDB, closeDB } from './mongodbSetup';
+
+beforeAll(async () => {
+  await connectDB();
+});
+
+afterAll(async () => {
+  await closeDB();
+});
+
+test('GET /api/products', async () => {
+  const res = await request(app).get('/api/products');
+  expect(res.statusCode).toBe(200);
+  expect(res.body.length).toBeGreaterThan(0);
+});
+```
+
+```javascript
+// PostgreSQL
+import { connectDB, closeDB } from './postgresSetup';
+
+beforeAll(async () => {
+  await connectDB();
+});
+
+afterAll(async () => {
+  await closeDB();
+});
+
+test('GET /api/products', async () => {
+  const res = await request(app).get('/api/products');
+  expect(res.statusCode).toBe(200);
+  expect(res.body.length).toBeGreaterThan(0);
+});
+```
+
+The main differences are the setup files (`mongodbSetup.js` and `postgresSetup.js`) that create and manage the in-memory database instances. The test code itself remains similar, as you can use Jest and Supertest for both MongoDB and PostgreSQL.
+
+By using in-memory databases for testing, you can ensure that your tests are fast, reliable, and independent of the actual database. This approach allows you to test your application's behavior without worrying about the underlying database implementation.
+
+Citations:
+[1] https://stackoverflow.com/questions/36175981/can-we-use-postgres-for-testing-and-mongo-for-development-environment-in-rails
+[2] https://www.boltic.io/blog/connect-postgresql-and-mongodb
+[3] https://www.toptal.com/nodejs/integration-and-e2e-tests-nodejs-mongodb
+[4] https://www.reddit.com/r/dotnet/comments/1c49sap/is_working_with_both_sql_and_mongodb_at_the_same/
+[5] https://www.mongodb.com/resources/compare/mongodb-postgresql
+[6] https://dev.to/shyamajp/testing-nodejsexpress-app-mongodb-with-jest-and-supertest-56ce
+[7] https://www.freecodecamp.org/news/how-to-test-in-express-and-mongoose-apps/
+[8] https://www.mongodb.com/resources/compare/mongodb-postgresql/dsl-migrating-postgres-to-mongodb
