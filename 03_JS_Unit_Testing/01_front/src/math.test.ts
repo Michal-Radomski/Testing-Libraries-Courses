@@ -47,12 +47,14 @@ it("should yield 0 if an empty array is provided", (): void => {
   const result: number = add(numbers);
 
   expect(result).toBe(0);
+  expect(result).not.toBe(1);
 });
 
 it("should throw an error if no value is passed into the function", (): void => {
   const resultFn = (): void => {
     add();
   };
+  // expect(resultFn).toThrow(); //* Not to do it!
   expect(resultFn).toThrow(/is not iterable/);
 });
 
