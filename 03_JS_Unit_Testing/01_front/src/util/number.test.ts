@@ -44,6 +44,7 @@ describe("cleanNumbers()", (): void => {
 
     expect(cleanedNumbers[0]).toBeTypeOf("number");
     expect(cleanedNumbers[1]).toBeTypeOf("number");
+    expect(cleanedNumbers).toEqual([1, 2]); //* toBe would fail!
     expect(cleanedNumbers).toSatisfy((arr: number[]) => arr.every((elem): elem is number => typeof elem === "number"));
   });
 

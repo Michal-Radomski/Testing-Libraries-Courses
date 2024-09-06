@@ -1,0 +1,18 @@
+{
+  "name": "04_async",
+  "version": "1.0.0",
+  "main": "async/async-example.ts",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
+    "vitest": "^0.9.2"
+  }
+}
