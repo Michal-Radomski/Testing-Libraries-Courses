@@ -1,8 +1,8 @@
-import { expect, it } from "vitest";
+import { DoneCallback, expect, it } from "vitest";
 
 import { generateToken, generateTokenPromise } from "./async-example";
 
-it("should generate a token value", (done): void => {
+it("should generate a token value", (done: DoneCallback): void => {
   const testUserEmail = "test@test.com";
 
   generateToken(testUserEmail, (_err, token) => {
@@ -10,7 +10,6 @@ it("should generate a token value", (done): void => {
 
     try {
       expect(token).toBeDefined();
-      // expect(token).toBe(2);
       done();
     } catch (err) {
       done(err);
@@ -24,6 +23,7 @@ it("should generate a token value", (): void => {
   expect(generateTokenPromise(testUserEmail)).resolves.toBeDefined();
 });
 
+//* Easier way
 it("should generate a token value", async (): Promise<void> => {
   const testUserEmail = "test@test.com";
 

@@ -10,14 +10,17 @@ describe("Class User", (): void => {
     user = new User(testEmail);
     console.log("beforeAll()");
   });
+
   beforeEach((): void => {
     user = new User(testEmail);
     console.log("beforeEach()");
   });
+
   afterEach((): void => {
     // user = new User(testEmail);
     console.log("afterEach()");
   });
+
   afterAll((): void => {
     console.log("afterAll()");
   });
