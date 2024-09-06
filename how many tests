@@ -1,2 +1,0 @@
-// sum += +number;
-sum += Number(number);
