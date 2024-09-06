@@ -1,6 +1,6 @@
-import { it, expect, describe } from "vitest";
+import { describe, it, expect } from "vitest";
 
-import { transformToNumber } from "./numbers";
+import { cleanNumbers, transformToNumber } from "./numbers";
 
 describe("transformToNumber()", (): void => {
   // it("should transform a string number to a number of type number", (): void => {
@@ -32,5 +32,27 @@ describe("transformToNumber()", (): void => {
 
     expect(result).toBeNaN();
     expect(result2).toBeNaN();
+  });
+});
+
+describe("cleanNumbers()", (): void => {
+  it("should return an array of number values if an array of string number values is provided", (): void => {
+    const numberValues = ["1", "2"];
+
+    const cleanedNumbers = cleanNumbers(numberValues);
+    // console.log("cleanedNumbers:", cleanedNumbers);
+
+    expect(cleanedNumbers[0]).toBeTypeOf("number");
+    expect(cleanedNumbers[1]).toBeTypeOf("number");
+    expect(cleanedNumbers).toSatisfy((arr: number[]) => arr.every((elem): elem is number => typeof elem === "number"));
+  });
+
+  it("should throw an error if an array with at least one empty string is provided", (): void => {
+    const numberValues = ["", 1];
+
+    const cleanFn = () => cleanNumbers(numberValues);
+
+    expect(cleanFn).toThrow();
+    expect(cleanFn).toThrow(/Invalid input/i);
   });
 });
