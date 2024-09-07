@@ -3,7 +3,7 @@ import { it, expect, beforeAll, beforeEach, afterEach, afterAll, describe } from
 import { User } from "./hooks";
 
 describe("Class User", (): void => {
-  const testEmail = "test@test.com";
+  const testEmail: string = "test@test.com";
   let user: User;
 
   beforeAll((): void => {
@@ -26,7 +26,7 @@ describe("Class User", (): void => {
   });
 
   it.concurrent("should update the email", (): void => {
-    const newTestEmail = "test2@test.com";
+    const newTestEmail: string = "test2@test.com";
 
     user.updateEmail(newTestEmail);
 

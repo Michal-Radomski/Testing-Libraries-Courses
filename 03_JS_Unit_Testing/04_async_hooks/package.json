@@ -1,5 +1,5 @@
 {
-  "name": "04_async",
+  "name": "04_async_hooks",
   "version": "1.0.0",
   "main": "async/async-example.ts",
   "scripts": {
