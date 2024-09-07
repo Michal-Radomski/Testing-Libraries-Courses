@@ -5,6 +5,7 @@
   "main": "app.ts",
   "type": "module",
   "scripts": {
+    "start": "tsx app.ts",
     "test": "vitest"
   },
   "keywords": [],
