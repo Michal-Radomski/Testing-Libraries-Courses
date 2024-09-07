@@ -1,3 +1,4 @@
+import React from "react";
 import { GrInstall, GrEdit, GrTerminal, GrResources, GrUserExpert, GrKey } from "react-icons/gr";
 
 import CourseGoal from "./CourseGoal";
@@ -32,11 +33,13 @@ const GOALS = [
 
 function CourseGoals(): JSX.Element {
   return (
-    <ul className={classes.goals}>
-      {GOALS.map((goal) => (
-        <CourseGoal key={goal.text} {...goal} />
-      ))}
-    </ul>
+    <React.Fragment>
+      <ul className={classes.goals}>
+        {GOALS.map((goal) => (
+          <CourseGoal key={goal.text} {...goal} />
+        ))}
+      </ul>
+    </React.Fragment>
   );
 }
 
