@@ -6,6 +6,7 @@ import writeData from "./io";
 // Define the type for the join function
 type JoinFunction = (...args: string[]) => string;
 
+//* Mock is valid only for this file
 vi.mock("fs");
 vi.mock("path", () => {
   return {
@@ -24,17 +25,17 @@ it("should execute the writeFile method", (): void => {
   writeData(testData, testFilename);
 
   // return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
-  // expect(fs.writeFile).toBeCalled();
+  expect(fs.writeFile).toBeCalled();
   expect(fs.writeFile).toBeCalledWith(testFilename, testData);
 });
 
-// it("should return a promise that resolves to no value if called correctly", (): Promise<void> => {
-//   const testData = "Test";
-//   const testFilename = "test.txt";
+it("should return a promise that resolves to no value if called correctly", (): Promise<void> => {
+  const testData = "Test";
+  const testFilename = "test.txt";
 
-//   writeData(testData, testFilename);
+  writeData(testData, testFilename);
 
-//   return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
-//   // expect(fs.writeFile).toBeCalled();
-//   // expect(fs.writeFile).toBeCalledWith(testFilename, testData);
-// });
+  return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
+  // expect(fs.writeFile).toBeCalled();
+  // expect(fs.writeFile).toBeCalledWith(testFilename, testData);
+});

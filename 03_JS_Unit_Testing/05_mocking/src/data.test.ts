@@ -12,6 +12,7 @@ describe("generateReportData()", () => {
     generateReportData(logger);
 
     expect(logger).toBeCalled();
+    expect(logger).toBeCalledTimes(1);
     expect(logger).toHaveBeenCalled();
   });
 });
