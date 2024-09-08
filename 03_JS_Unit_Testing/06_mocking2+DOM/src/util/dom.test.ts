@@ -2,16 +2,16 @@ import fs from "fs";
 import path from "path";
 
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { Window } from "happy-dom";
+import { Window, Document } from "happy-dom";
 
 import { showError } from "./dom";
 
 describe("dom.ts", (): void => {
-  const htmlDocPath: string = path.join(process.cwd(), "index.html");
+  const htmlDocPath: string = path.join(process.cwd() as string, "index.html");
   const htmlDocumentContent: string = fs.readFileSync(htmlDocPath).toString();
 
-  const window = new Window();
-  const document = window.document;
+  const window: Window = new Window();
+  const document: Document = window.document;
   // console.log("window:", window);
   // console.log("document:", document);
 
