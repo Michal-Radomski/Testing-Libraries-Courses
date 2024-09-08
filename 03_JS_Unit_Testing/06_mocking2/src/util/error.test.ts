@@ -8,7 +8,7 @@ describe("class HttpError", (): void => {
     const testMessage = "Test";
     const testData = { key: "test" };
 
-    const testError = new HttpError(testStatus, testMessage, testData);
+    const testError = new HttpError(testStatus, testMessage, testData) as HttpError;
 
     expect(testError.statusCode).toBe(testStatus);
     expect(testError.message).toBe(testMessage);
@@ -19,7 +19,7 @@ describe("class HttpError", (): void => {
     const testStatus = 1;
     const testMessage = "Test";
 
-    const testError = new HttpError(testStatus, testMessage);
+    const testError = new HttpError(testStatus, testMessage) as HttpError;
 
     expect(testError.statusCode).toBe(testStatus);
     expect(testError.message).toBe(testMessage);
@@ -31,7 +31,7 @@ describe("class ValidationError", (): void => {
   it("should contain the provided message", (): void => {
     const testMessage = "test";
 
-    const testError = new ValidationError(testMessage);
+    const testError = new ValidationError(testMessage) as ValidationError;
 
     expect(testError.message).toBe(testMessage);
   });
