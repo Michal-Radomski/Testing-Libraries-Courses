@@ -1,6 +1,6 @@
-import { HttpError } from "./errors.js";
+import { HttpError } from "./errors";
 
-export async function sendDataRequest(data) {
+export async function sendDataRequest(data: object): Promise<void> {
   const response = await fetch("https://dummy-site.dev/posts", {
     method: "POST",
     headers: {

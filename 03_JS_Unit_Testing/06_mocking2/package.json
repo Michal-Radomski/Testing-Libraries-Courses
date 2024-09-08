@@ -1,20 +1,20 @@
 {
   "name": "06_mocking_2",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/app.ts",
   "scripts": {
-    "start": "http-server -c-1",
+    "dev": "clear && vite",
+    "build": "clear && tsc && vite build",
+    "preview": "clear && vite preview",
     "test": "vitest --run"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "http-server": "^14.1.0"
-  },
   "devDependencies": {
-    "happy-dom": "^2.55.0",
-    "vitest": "^0.9.3"
-  }
+    "sass": "^1.69.7",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {}
 }
