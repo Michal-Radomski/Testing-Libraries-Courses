@@ -12,6 +12,7 @@ export async function sendDataRequest(data: object): Promise<void> {
   const responseData = await response.json();
 
   if (!response.ok) {
+    // throw new Error("Error!");
     throw new HttpError(response.status, "Sending the request failed.", responseData);
   }
 

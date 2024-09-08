@@ -3,3 +3,5 @@ interface Post {
   content: string;
   title: string;
 }
+
+type CustomPost = Post | FormData;
