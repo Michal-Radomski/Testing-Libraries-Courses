@@ -5,7 +5,7 @@ function Header(): JSX.Element {
   return (
     <header className="main-header">
       <img src={logo} alt="A list" />
-      <h1>React Tasks</h1>
+      <h1>My Cypress Course Tasks</h1>
     </header>
   );
 }
