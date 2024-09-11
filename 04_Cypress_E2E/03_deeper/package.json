@@ -1,5 +1,5 @@
 {
-  "name": "02_cypress-basics",
+  "name": "03_cypress_deeper",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
     "sass": "^1.78.0"
   },
   "devDependencies": {
