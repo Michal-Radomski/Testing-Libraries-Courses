@@ -64,6 +64,7 @@ describe("contact form", (): void => {
       expect(el.attr("disabled")).to.be.undefined;
       expect(el.text()).to.eq("Send Message");
     });
+    // cy.screenshot();
     cy.get('[data-cy="contact-input-email"]').type("test@example.com{enter}"); //* Key press simulation
     // cy.get('[data-cy="contact-btn-submit"]')
     //   .contains('Send Message')
