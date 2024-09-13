@@ -9,12 +9,11 @@ export default defineConfig({
   pageLoadTimeout: 6000, // Default values
   e2e: {
     baseUrl: "http://localhost:5173",
-    setupNodeEvents(on, config) {
+    setupNodeEvents(on: Cypress.PluginEvents, _config: Cypress.PluginConfigOptions) {
       // implement node event listeners here
       on("task", {
         seedDatabase(filename) {
-          // Run your NodeJS code
-          // e.g., edit a file here
+          // Run your NodeJS code e.g., edit a file here
           return filename;
         },
       });
