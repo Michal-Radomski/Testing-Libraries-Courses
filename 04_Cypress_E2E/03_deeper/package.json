@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "cypress": "npx cypress open",
-    "cypress2": "npx cypress run"
+    "cypress2": "npx cypress run --browser firefox"
   },
   "dependencies": {
     "react": "^18.2.0",
