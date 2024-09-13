@@ -35,3 +35,24 @@
 //     }
 //   }
 // }
+
+export {};
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      submitForm(): Chainable<void>;
+      getById(id: string): Cypress.Chainable<JQuery<HTMLElement>>;
+    }
+  }
+}
+
+Cypress.Commands.add("submitForm", () => {
+  cy.get('form button[type="submit"]').click();
+});
+
+Cypress.Commands.addQuery("getById", (id: string) => {
+  const getFn = cy.now("get", `[data-cy="${id}"`) as () => Promise<HTMLElement>;
+  return () => {
+    return getFn();
+  };
+});
