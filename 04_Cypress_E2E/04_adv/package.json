@@ -6,11 +6,16 @@
   "scripts": {
     "dev": "clear && vite",
     "build": "clear && tsc && vite build",
-    "preview": "clear && vite preview"
+    "preview": "clear && vite preview",
+    "cypress": "npx cypress open",
+    "cypress2": "npx cypress run --browser firefox"
   },
   "devDependencies": {
     "sass": "^1.69.7",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "cypress": "^13.14.2"
   }
 }
