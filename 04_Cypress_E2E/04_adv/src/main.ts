@@ -1,6 +1,14 @@
 import "./style.scss";
 
-const user = {
+interface User {
+  location: {
+    lat: number;
+    lng: number;
+    url: string;
+  };
+}
+
+const user: User = {
   location: {
     lat: 0,
     lng: 0,
@@ -25,7 +33,7 @@ function getUserLocation(event: Event): void {
         container.querySelector("button")!.disabled = false;
         container.querySelector("button")!.classList.add("active");
       },
-      () => {
+      (): void => {
         displayInfoMessage("Your browser or permission settings do not allow location fetching.");
       }
     );
@@ -73,7 +81,7 @@ function copyToClipboard(data: string, infoText: string): void {
   }
 }
 
-let existingTimer: number;
+let existingTimer: NodeJS.Timeout;
 
 function displayInfoMessage(message: string) {
   if (existingTimer) {
