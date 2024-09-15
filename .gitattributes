@@ -1,5 +1,5 @@
-*.json linguist-detectable=true
-*.json linguist-language=JSON
+# *.json linguist-detectable=true
+# *.json linguist-language=JSON
 
 *.prisma linguist-detectable=true
 *.prisma linguist-language=Prisma
