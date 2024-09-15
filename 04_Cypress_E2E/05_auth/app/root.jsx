@@ -26,7 +26,10 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-gradient-to-br from-slate-900 to-slate-800 h-screen text-slate-300">
+      <body
+        className="bg-gradient-to-br from-slate-900 to-slate-800 h-screen text-slate-300"
+        suppressHydrationWarning={true}
+      >
         <Layout isLoggedIn={isLoggedIn}>
           <Outlet />
         </Layout>
