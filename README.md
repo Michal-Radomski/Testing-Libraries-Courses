@@ -9,3 +9,5 @@ Files created during Udemy.com testing libraries courses.
 3. [JavaScript Unit Testing - The Practical Guide](https://www.udemy.com/course/javascript-unit-testing-the-practical-guide)
 
 4. [Cypress End-to-End Testing](https://www.udemy.com/course/cypress-end-to-end-testing-getting-started)
+
+5. [Unit Testing for Typescript & NodeJs with Jest](https://www.udemy.com/course/unit-testing-typescript-nodejs)
