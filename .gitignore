@@ -28,3 +28,5 @@ Temp/
 notes.txt
 01_React-Testing-Library_Jest/003_materials/
 mochawesome-report/
+.cache
+04_Cypress_E2E/05_auth/app/styles/tailwind.css
