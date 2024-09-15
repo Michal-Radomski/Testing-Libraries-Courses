@@ -26,7 +26,7 @@ describe("Auth", () => {
   });
 
   it("should logout", () => {
-    cy.login(); //* Custom Command
+    cy.login(); //* Custom command
     cy.contains("Logout").click();
     cy.location("pathname").should("eq", "/");
     cy.getCookie("__session").its("value").should("be.empty");
