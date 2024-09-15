@@ -1,0 +1,126 @@
+In TypeScript testing, particularly when using libraries like Sinon or Jest, the concepts of **stubs**, **mocks**, **fakes**, and **spies** are essential for isolating units of code and controlling their behavior during tests. Here’s a breakdown of each, along with examples in TypeScript:
+
+## Stubs
+
+- **Definition**: Stubs are used to provide predetermined responses to method calls. They do not contain any logic and always return the same output regardless of the input.
+
+- **Usage**: Stubs are useful when you want to isolate a unit of code from its dependencies and control the output.
+
+- **Example**:
+  
+```typescript
+import { stub } from 'sinon';
+
+interface UserService {
+    getUser(id: number): Promise<string>;
+}
+
+const userServiceStub: UserService = {
+    getUser: stub().returns(Promise.resolve('John Doe'))
+};
+
+// Usage in a test
+async function testGetUser() {
+    const user = await userServiceStub.getUser(1);
+    console.log(user); // Outputs: John Doe
+}
+```
+
+## Mocks
+
+- **Definition**: Mocks are similar to stubs but with added functionality. They allow you to set expectations on how they should be used and can verify that methods were called with specific arguments or a certain number of times.
+
+- **Usage**: Mocks are used when you want to test interactions between the unit under test and its dependencies.
+
+- **Example**:
+
+```typescript
+import { mock, verify } from 'ts-mockito';
+
+interface UserService {
+    getUser(id: number): Promise<string>;
+}
+
+const userServiceMock = mock<UserService>();
+userServiceMock.getUser(1).then(() => 'John Doe');
+
+// Usage in a test
+async function testGetUser() {
+    await userServiceMock.getUser(1);
+    verify(userServiceMock.getUser(1)).once(); // Verify that getUser was called once
+}
+```
+
+## Fakes
+
+- **Definition**: Fakes are objects that have a working implementation but are simplified versions of real components. They can be used in place of real implementations but are not suitable for production.
+
+- **Usage**: Fakes are often used when you want to test a component that interacts with a complex system without the overhead of the actual implementation.
+
+- **Example**:
+
+```typescript
+class FakeUserService implements UserService {
+    private users: { [key: number]: string } = { 1: 'John Doe' };
+
+    async getUser(id: number): Promise<string> {
+        return this.users[id] || 'User not found';
+    }
+}
+
+// Usage in a test
+async function testFakeUserService() {
+    const fakeService = new FakeUserService();
+    const user = await fakeService.getUser(1);
+    console.log(user); // Outputs: John Doe
+}
+```
+
+## Spies
+
+- **Definition**: Spies are a hybrid between mocks and stubs. They allow you to call the real methods of an object while also recording information about how those methods were used.
+
+- **Usage**: Spies are useful when you want to verify that certain methods were called without altering their behavior.
+
+- **Example**:
+
+```typescript
+import { spy } from 'sinon';
+
+class UserService {
+    async getUser(id: number): Promise<string> {
+        return 'Real User';
+    }
+}
+
+const userService = new UserService();
+const userServiceSpy = spy(userService, 'getUser');
+
+// Usage in a test
+async function testSpy() {
+    await userServiceSpy.getUser(1);
+    console.log(userServiceSpy.called); // Outputs: true
+    console.log(userServiceSpy.calledWith(1)); // Outputs: true
+}
+```
+
+## Summary Table
+
+| Type   | Description                                                                 | Example Use Case                                      |
+|--------|-----------------------------------------------------------------------------|------------------------------------------------------|
+| **Stub**  | Provides fixed responses to method calls without logic.                    | Isolate a method that fetches user data.             |
+| **Mock**  | Allows setting expectations and verifying method calls.                    | Verify that a method was called with specific arguments. |
+| **Fake**  | Has a working implementation but is a simplified version of the real thing. | Simulate a database for testing without actual DB calls. |
+| **Spy**   | Records information about how methods are called while executing real implementations. | Check that a method was called without changing its behavior. |
+
+Understanding these differences helps in selecting the appropriate type of test double based on the testing requirements and the behavior being validated.
+
+Citations:
+[1] https://stackoverflow.com/questions/24413184/difference-between-mock-stub-spy-in-spock-test-framework
+[2] https://www.javatpoint.com/mock-vs-stub-vs-spy
+[3] https://www.ankursheel.com/blog/difference-stubs-mocks-fakes-spies
+[4] https://blog.bitsrc.io/understanding-spies-stubs-and-mocks-in-test-automation-d4b5cda56d39?gi=048060fdfb07
+[5] https://stackoverflow.com/questions/52131231/simple-definition-of-stub-spy-fake-and-mock-in-unit-testing
+[6] https://www.youtube.com/watch?v=0lVWl3-B2w4
+[7] https://stackoverflow.com/questions/346372/whats-the-difference-between-faking-mocking-and-stubbing
+[8] https://sinonjs.org
