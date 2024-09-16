@@ -14,18 +14,18 @@ describe("Utils test suite", (): void => {
   it.only("should return info for valid string", (): void => {
     const actual = getStringInfo("My-String");
 
-    expect(actual.lowerCase).toBe("my-string");
-    expect(actual.extraInfo).toEqual({});
+    expect(actual.lowerCase).toBe("my-string"); //* Primitives
+    expect(actual.extraInfo).toEqual({}); //* Objects
 
     expect(actual.characters.length).toBe(9);
-    expect(actual.characters).toHaveLength(9);
+    expect(actual.characters).toHaveLength(9); //* Better assertion
 
     expect(actual.characters).toEqual(["M", "y", "-", "S", "t", "r", "i", "n", "g"]);
     expect(actual.characters).toContain<string>("M");
     expect(actual.characters).toEqual(expect.arrayContaining(["S", "t", "r", "i", "n", "g", "M", "y", "-"]));
 
     expect(actual.extraInfo).not.toBe(undefined);
-    expect(actual.extraInfo).not.toBeUndefined();
+    expect(actual.extraInfo).not.toBeUndefined(); //* Better assertion
     expect(actual.extraInfo).toBeDefined();
     expect(actual.extraInfo).toBeTruthy();
   });
