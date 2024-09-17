@@ -2,7 +2,7 @@
   "name": "05_ts_node_jest",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "build": "tsc"
   },
   "keywords": [],
