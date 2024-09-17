@@ -5,6 +5,8 @@ const config: Config.InitialOptions = {
   testEnvironment: "node",
   verbose: true,
   testTimeout: 10000,
+  collectCoverage: true,
+  collectCoverageFrom: ["<rootDir>/src/app/**/*.ts"],
 };
 
 export default config;

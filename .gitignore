@@ -31,3 +31,4 @@ notes.txt
 mochawesome-report/
 .cache
 04_Cypress_E2E/05_auth/app/styles/tailwind.css
+coverage/
