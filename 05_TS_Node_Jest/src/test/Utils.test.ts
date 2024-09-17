@@ -1,5 +1,10 @@
 import { getStringInfo, StringUtils, toUpperCase } from "../app/Utils";
 
+//* can be: it.todo
+//* it = test
+//* fit = it.only
+//* xit = it.skip
+
 describe("Utils test suite", (): void => {
   describe.only("StringUtils tests", (): void => {
     let sut: StringUtils;
@@ -14,14 +19,14 @@ describe("Utils test suite", (): void => {
       console.log("Teardown");
     });
 
-    it("Should return correct upperCase", (): void => {
+    it.skip("Should return correct upperCase", (): void => {
       const actual = sut.toUpperCase("abc");
 
       expect(actual).toBe("ABC");
       console.log("Actual test");
     });
 
-    it("Should throw error on invalid argument - function", (): void => {
+    it.concurrent("Should throw error on invalid argument - function", (): void => {
       function expectError() {
         const actual = sut.toUpperCase("");
       }
