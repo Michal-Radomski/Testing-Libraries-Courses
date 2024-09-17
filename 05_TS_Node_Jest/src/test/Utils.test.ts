@@ -20,6 +20,32 @@ describe("Utils test suite", (): void => {
       expect(actual).toBe("ABC");
       console.log("Actual test");
     });
+
+    it("Should throw error on invalid argument - function", (): void => {
+      function expectError() {
+        const actual = sut.toUpperCase("");
+      }
+      expect(expectError).toThrow();
+      expect(expectError).toThrowError("Invalid argument!");
+    });
+
+    it("Should throw error on invalid argument - arrow function", (): void => {
+      expect(() => {
+        sut.toUpperCase("");
+      }).toThrowError("Invalid argument!");
+    });
+
+    it.only("Should throw error on invalid argument - try catch block", (done): void => {
+      try {
+        sut.toUpperCase("");
+        // fail("GetStringInfo should throw error for invalid arg!");
+        done("GetStringInfo should throw error for invalid arg!");
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+        expect(error).toHaveProperty("message", "Invalid argument!");
+        done();
+      }
+    });
   });
 
   it("should return uppercase of valid string", (): void => {
