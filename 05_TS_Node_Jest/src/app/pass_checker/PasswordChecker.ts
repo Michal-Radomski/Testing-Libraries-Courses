@@ -46,13 +46,13 @@ export class PasswordChecker {
   }
 
   private checkForUpperCase(password: string, reasons: PasswordErrors[]) {
-    if (password == password.toLowerCase()) {
+    if (password === password.toLowerCase()) {
       reasons.push(PasswordErrors.NO_UPPER_CASE);
     }
   }
 
   private checkForLowerCase(password: string, reasons: PasswordErrors[]) {
-    if (password == password.toUpperCase()) {
+    if (password === password.toUpperCase()) {
       reasons.push(PasswordErrors.NO_LOWER_CASE);
     }
   }
