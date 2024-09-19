@@ -12,17 +12,19 @@ describe("OtherUtils test suite", (): void => {
     it("calls callback for invalid argument - track calls", (): void => {
       const actual = toUpperCaseWithCb("", callBackMock);
       expect(actual).toBeUndefined();
-      // expect(callBackMock).toBeCalledWith("Invalid argument!");
+      // expect(callBackMock).toBeCalledWith("Invalid argument!"); //* Deprecated!
       expect(callBackMock).toHaveBeenCalledWith("Invalid argument!");
-      // expect(callBackMock).toBeCalledTimes(1);
+      // expect(callBackMock).toBeCalledTimes(1); //* Deprecated!
       expect(callBackMock).toHaveBeenCalledTimes(1);
     });
 
     it("calls callback for valid argument - track calls", (): void => {
       const actual = toUpperCaseWithCb("abc", callBackMock);
       expect(actual).toBe("ABC");
-      expect(callBackMock).toBeCalledWith("called function with abc");
-      expect(callBackMock).toBeCalledTimes(1);
+      // expect(callBackMock).toBeCalledWith("called function with abc"); //* Deprecated!
+      expect(callBackMock).toHaveBeenCalledWith("called function with abc");
+      // expect(callBackMock).toBeCalledTimes(1); //* Deprecated!
+      expect(callBackMock).toHaveBeenCalledTimes(1);
     });
   });
 
