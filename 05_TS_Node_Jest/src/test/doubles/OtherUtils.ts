@@ -1,8 +1,8 @@
-import { calculateComplexity, StringInfo, toUpperCaseWithCb } from "../../app/doubles/OtherUtils";
+import { calculateComplexity, OtherStringUtils, StringInfo, toUpperCaseWithCb } from "../../app/doubles/OtherUtils";
 
 describe("OtherUtils test suite", (): void => {
   //* Mocks
-  describe.only("Tracking callbacks with Jest mocks", (): void => {
+  describe("Tracking callbacks with Jest mocks", (): void => {
     const callBackMock: jest.Mock<any, any, any> = jest.fn();
 
     afterEach(() => {
@@ -59,19 +59,20 @@ describe("OtherUtils test suite", (): void => {
     });
   });
 
+  //* Fake
   it("ToUpperCase - calls callback for invalid argument", (): void => {
-    //* Fake
     const actual = toUpperCaseWithCb("", () => {});
     expect(actual).toBeUndefined();
   });
 
+  //* Fake
   it("ToUpperCase - calls callback for valid argument", (): void => {
     const actual = toUpperCaseWithCb("abc", () => {});
     expect(actual).toBe("ABC");
   });
 
+  //* Stub
   it("Calculates complexity", (): void => {
-    //* Stub
     const someInfo = {
       length: 5,
       extraInfo: {
