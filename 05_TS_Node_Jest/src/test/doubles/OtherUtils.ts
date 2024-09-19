@@ -12,13 +12,15 @@ describe("OtherUtils test suite", (): void => {
     test("Use a spy to track calls", (): void => {
       const toUpperCaseSpy = jest.spyOn(sut, "toUpperCase");
       sut.toUpperCase("asa");
-      expect(toUpperCaseSpy).toBeCalledWith("asa");
+      // expect(toUpperCaseSpy).toBeCalledWith("asa"); //* Deprecated!
+      expect(toUpperCaseSpy).toHaveBeenCalledWith("asa");
     });
 
     test("Use a spy to track calls to other module", (): void => {
       const consoleLogSpy = jest.spyOn(console, "log");
       sut.logString("abc");
-      expect(consoleLogSpy).toBeCalledWith("abc");
+      // expect(consoleLogSpy).toBeCalledWith("abc"); //* Deprecated!
+      expect(consoleLogSpy).toHaveBeenCalledWith("abc");
     });
 
     test("Use a spy to replace the implementation of a method", (): void => {
