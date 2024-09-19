@@ -1,4 +1,4 @@
-import { calculateComplexity } from "../../app/doubles/OtherUtils";
+import { calculateComplexity, StringInfo } from "../../app/doubles/OtherUtils";
 
 describe("OtherUtils test suite", (): void => {
   it("Calculates complexity", (): void => {
@@ -8,9 +8,9 @@ describe("OtherUtils test suite", (): void => {
         field1: "someInfo",
         field2: "someOtherInfo",
       },
-    };
+    } as unknown as StringInfo;
 
-    const actual = calculateComplexity(someInfo as any);
+    const actual = calculateComplexity(someInfo);
     expect(actual).toBe(10);
   });
 });

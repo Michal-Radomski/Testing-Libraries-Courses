@@ -1,4 +1,4 @@
-export type stringInfo = {
+export type StringInfo = {
   lowerCase: string;
   upperCase: string;
   characters: string[];
@@ -6,6 +6,6 @@ export type stringInfo = {
   extraInfo: Object | undefined;
 };
 
-export function calculateComplexity(stringInfo: stringInfo): number {
+export function calculateComplexity(stringInfo: StringInfo): number {
   return Object.keys(stringInfo.extraInfo!).length * stringInfo.length;
 }
