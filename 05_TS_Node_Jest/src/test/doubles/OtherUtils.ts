@@ -2,7 +2,32 @@ import { calculateComplexity, StringInfo, toUpperCaseWithCb } from "../../app/do
 
 describe("OtherUtils test suite", (): void => {
   //* Mocks
-  describe.only("Tracking callbacks", (): void => {
+  describe.only("Tracking callbacks with Jest mocks", (): void => {
+    const callBackMock: jest.Mock<any, any, any> = jest.fn();
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it("calls callback for invalid argument - track calls", (): void => {
+      const actual = toUpperCaseWithCb("", callBackMock);
+      expect(actual).toBeUndefined();
+      // expect(callBackMock).toBeCalledWith("Invalid argument!");
+      expect(callBackMock).toHaveBeenCalledWith("Invalid argument!");
+      // expect(callBackMock).toBeCalledTimes(1);
+      expect(callBackMock).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls callback for valid argument - track calls", (): void => {
+      const actual = toUpperCaseWithCb("abc", callBackMock);
+      expect(actual).toBe("ABC");
+      expect(callBackMock).toBeCalledWith("called function with abc");
+      expect(callBackMock).toBeCalledTimes(1);
+    });
+  });
+
+  //* Mocks
+  describe("Tracking callbacks", (): void => {
     let cbArgs = [] as string[];
     let timesCalled = 0;
 
