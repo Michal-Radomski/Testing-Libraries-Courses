@@ -43,9 +43,27 @@ describe("UserCredentialsDataAccess test suite", (): void => {
   it("should add user and return the id", async (): Promise<void> => {
     insertMock.mockResolvedValueOnce(someId); //* With async code!
 
-    const actualId = await sut.addUser(someAccount);
+    const actualId = (await sut.addUser(someAccount)) as string;
 
     expect(actualId).toBe(someId);
     expect(insertMock).toHaveBeenCalledWith(someAccount);
+  });
+
+  it("should get user by id", async (): Promise<void> => {
+    getByMock.mockResolvedValueOnce(someAccount);
+
+    const actualUser = (await sut.getUserById(someId)) as Account;
+
+    expect(actualUser).toEqual(someAccount);
+    expect(getByMock).toHaveBeenCalledWith("id", someId);
+  });
+
+  it("should get user by name", async (): Promise<void> => {
+    getByMock.mockResolvedValueOnce(someAccount);
+
+    const actualUser = (await sut.getUserByUserName(someAccount.userName)) as Account;
+
+    expect(actualUser).toEqual(someAccount);
+    expect(getByMock).toHaveBeenCalledWith("userName", someAccount.userName);
   });
 });
