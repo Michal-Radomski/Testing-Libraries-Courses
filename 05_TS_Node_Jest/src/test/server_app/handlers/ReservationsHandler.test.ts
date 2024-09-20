@@ -1,4 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
+
 import { Authorizer } from "../../../app/server_app/auth/Authorizer";
 import { ReservationsDataAccess } from "../../../app/server_app/data/ReservationsDataAccess";
 import { ReservationsHandler } from "../../../app/server_app/handlers/ReservationsHandler";
@@ -52,9 +53,9 @@ describe("ReservationsHandler test suite", (): void => {
   beforeEach((): void => {
     sut = new ReservationsHandler(
       request as IncomingMessage,
-      responseMock as any as ServerResponse,
-      authorizerMock as any as Authorizer,
-      reservationsDataAccessMock as any as ReservationsDataAccess
+      responseMock as unknown as ServerResponse,
+      authorizerMock as unknown as Authorizer,
+      reservationsDataAccessMock as unknown as ReservationsDataAccess
     );
     request.headers.authorization = "abcd";
     authorizerMock.validateToken.mockResolvedValueOnce(true);

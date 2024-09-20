@@ -1,4 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
+
 import { Authorizer } from "../../../app/server_app/auth/Authorizer";
 import { LoginHandler } from "../../../app/server_app/handlers/LoginHandler";
 import { Account } from "../../../app/server_app/model/AuthModel";
@@ -38,8 +39,8 @@ describe("LoginHandler test suite", (): void => {
   beforeEach((): void => {
     sut = new LoginHandler(
       request as IncomingMessage,
-      responseMock as any as ServerResponse,
-      authorizerMock as any as Authorizer
+      responseMock as unknown as ServerResponse,
+      authorizerMock as unknown as Authorizer
     );
   });
 
