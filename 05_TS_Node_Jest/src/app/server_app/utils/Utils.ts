@@ -13,7 +13,7 @@ export async function getRequestBody(request: IncomingMessage): Promise<any> {
         reject(jsonError);
       }
     });
-    request.on("error", (error: any) => {
+    request.on("error", (error: Error) => {
       reject(error);
     });
   });
