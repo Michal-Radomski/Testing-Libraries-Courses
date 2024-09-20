@@ -13,8 +13,8 @@ jest.mock("../../../app/server_app/utils/Utils", () => ({
 describe("RegisterHandler test suite", (): void => {
   let sut: RegisterHandler;
 
-  const request = {
-    method: undefined as unknown,
+  const request: { method: HTTP_METHODS | undefined } = {
+    method: undefined,
   };
 
   const responseMock = {
