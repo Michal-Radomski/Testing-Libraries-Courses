@@ -1,4 +1,4 @@
-@token = 462fdb8a94ce7a383689
+@token = 489bc2c7547a013ce579
 
 POST http://localhost:8080/reservation
 Authorization: {{token}}
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:8080/reservation/30a1086ef4193f128c81
+GET http://localhost:8080/reservation/f79f4e486c399f834a24
 Authorization: {{token}}
 ###
 
@@ -20,7 +20,7 @@ GET http://localhost:8080/reservation/all
 Authorization: {{token}}
 ###
 
-PUT http://localhost:8080/reservation/0a581df56ea95a2fad52
+PUT http://localhost:8080/reservation/f79f4e486c399f834a24
 Authorization: {{token}}
 Content-Type: application/json
 

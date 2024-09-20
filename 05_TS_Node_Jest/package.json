@@ -4,7 +4,8 @@
   "scripts": {
     "test": "jest",
     "test2": "jest --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "ts-node src/app/server_app/Launcher.ts"
   },
   "keywords": [],
   "author": "Michal Radomski <michalra@op.pl>",
