@@ -5,6 +5,7 @@ jest.mock("../../app/doubles/OtherUtils", () => ({
   },
 }));
 
+//* Because: import { v4 as uuidv4 } from "uuid" - name of the npm module!
 jest.mock("uuid", () => ({
   v4: () => "123",
 }));

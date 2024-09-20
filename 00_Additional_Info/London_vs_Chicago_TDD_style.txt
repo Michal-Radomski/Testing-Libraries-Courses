@@ -1,0 +1,40 @@
+The main differences between the London and Chicago styles of Test-Driven Development (TDD) are:
+
+## **London Style (Top-Down)**
+
+- Starts testing from the top, at the controller or API level, and works down to the lower layers[1][4]
+- Tests are written against the public interface first, mocking out dependencies[1][2]
+- Promotes a more formal, behavior-based approach to TDD[4]
+- Helps flush out the application's API and how users will interact with it[4]
+- Can lead to more brittle tests that break easily when refactoring[1][4]
+- Encourages Command-Query Separation (CQS)[4]
+
+## **Chicago Style (Bottom-Up)**
+
+- Starts testing from the bottom, at the domain model level, and works up to the higher layers[1][2]
+- Tests are written for the core domain logic first, building up to the full use case[1][2]
+- Promotes a more informal, state-based approach to TDD[4]
+- Leads to more cohesive and evolvable code with fewer mocks[1][2]
+- Can result in over-designed code if taken too far[2]
+- Encourages high cohesion and loose coupling[4]
+
+## **Similarities and Best Practices**
+
+- Both styles aim to improve code quality, maintainability and encourage refactoring[1][4]
+- The original intent of TDD was to test the entire use case, one simple logic at a time, without a strict top-down or
+  bottom-up approach[1]
+- Mocking should be limited to boundary classes like databases or networks[3]
+- Tests should be fast and focused on a single behavior[1]
+- The best approach is to integrate both styles, using London style for APIs and Chicago style for domain logic[2][4]
+
+In summary, London style promotes a more formal, behavior-driven approach starting from the top, while Chicago style takes a
+more informal, state-driven approach starting from the bottom. The ideal is to combine the strengths of both styles for a
+comprehensive TDD practice.
+
+Citations: [1] https://blog.ncrunch.net/post/london-tdd-vs-detroit-tdd.aspx [2]
+https://optivem.com/chicago-tdd-vs-london-tdd-which-one-is-should-you-use/ [3]
+https://team-agile.com/2021/02/06/chicago-and-london-style-tdd/ [4] https://devlead.io/DevTips/LondonVsChicago [5]
+https://blog.devgenius.io/detroit-and-london-schools-of-test-driven-development-3d2f8dca71e5?gi=b5dd64397235 [6]
+https://dev.to/jesterxl/chicago-and-london-tdd-styles-for-functional-programming-455h [7]
+https://www.youtube.com/watch?v=_S5iUf0ANyQ [8]
+https://huggingface.co/richardr1126/spider-natsql-wizard-coder-merged/commit/985bfb94a0bd06930c7370950ee19eff6bce71a3.diff?file=tokenizer.json
