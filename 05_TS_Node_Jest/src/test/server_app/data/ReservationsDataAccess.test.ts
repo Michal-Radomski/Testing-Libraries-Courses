@@ -54,7 +54,8 @@ describe("ReservationsDataAccess test suite", (): void => {
     const actual = (await sut.createReservation(someReservation)) as string;
 
     expect(actual).toBe(someId);
-    expect(mockInsert).toBeCalledWith(someReservation);
+    // expect(mockInsert).toBeCalledWith(someReservation); //* @deprecated
+    expect(mockInsert).toHaveBeenCalledWith(someReservation);
   });
 
   it("should make the update reservation call", async (): Promise<void> => {
@@ -66,7 +67,7 @@ describe("ReservationsDataAccess test suite", (): void => {
   it("should make the delete reservation call", async (): Promise<void> => {
     await sut.deleteReservation(someId);
 
-    // expect(mockDelete).toBeCalledWith(someId);
+    // expect(mockDelete).toBeCalledWith(someId); //* @deprecated
     expect(mockDelete).toHaveBeenCalledWith(someId);
   });
 
