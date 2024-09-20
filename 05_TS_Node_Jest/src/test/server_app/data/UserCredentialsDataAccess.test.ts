@@ -5,7 +5,7 @@ import { Account } from "../../../app/server_app/model/AuthModel";
 const insertMock = jest.fn() as jest.Mock<any, any, any>;
 const getByMock = jest.fn() as jest.Mock<any, any, any>;
 
-interface ObjectI {
+export interface ObjectI {
   [key: string]: jest.Mock<any, any, any>;
 }
 
