@@ -49,7 +49,7 @@ export class Server {
         HTTP_CODES.INTERNAL_SERVER_ERROR,
         JSON.stringify(`Internal server error: ${(error as CustomError).message}`)
       );
-      console.log(error);
+      console.log("error:", (error as CustomError).message);
     }
   }
 

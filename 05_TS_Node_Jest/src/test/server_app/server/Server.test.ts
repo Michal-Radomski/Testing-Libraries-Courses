@@ -152,7 +152,7 @@ describe("Server test suite", (): void => {
 
     expect(async (): Promise<void> => {
       await sut.stopServer();
-    }).rejects.toThrowError("Error while closing server!");
+    }).rejects.toThrow("Error while closing server!");
 
     expect(serverMock.close).toHaveBeenCalledTimes(1);
   });
