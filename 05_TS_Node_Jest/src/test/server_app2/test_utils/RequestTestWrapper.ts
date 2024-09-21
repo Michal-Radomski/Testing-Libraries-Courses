@@ -6,7 +6,7 @@ export class RequestTestWrapper {
   public url: string | undefined;
   public headers: Record<string, string> = {};
 
-  public on(event: any, cb: Function) {
+  public on(event: any, cb: Function): void {
     if (event == "data") {
       cb(JSON.stringify(this.body));
     } else {
@@ -14,7 +14,7 @@ export class RequestTestWrapper {
     }
   }
 
-  public clearFields() {
+  public clearFields(): void {
     this.body = undefined;
     this.method = undefined;
     this.url = undefined;

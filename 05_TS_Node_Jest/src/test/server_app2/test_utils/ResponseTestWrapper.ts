@@ -5,18 +5,18 @@ export class ResponseTestWrapper {
   public headers = new Array<object>();
   public body: object | undefined;
 
-  public writeHead(statusCode: HTTP_CODES, header: object) {
+  public writeHead(statusCode: HTTP_CODES, header: object): void {
     this.statusCode = statusCode;
     this.headers.push(header);
   }
 
-  public write(stringifiedBody: string) {
+  public write(stringifiedBody: string): void {
     this.body = JSON.parse(stringifiedBody);
   }
 
-  public end() {}
+  public end(): void {}
 
-  public clearFields() {
+  public clearFields(): void {
     this.statusCode = undefined;
     this.body = undefined;
     this.headers.length = 0;
