@@ -37,15 +37,24 @@ describe("Server test suite", (): void => {
 
   beforeEach((): void => {
     sut = new Server();
-    expect(Authorizer).toBeCalledTimes(1);
-    expect(ReservationsDataAccess).toBeCalledTimes(1);
+    expect(Authorizer).toHaveBeenCalledTimes(1);
+    expect(ReservationsDataAccess).toHaveBeenCalledTimes(1);
   });
 
   afterEach((): void => {
     jest.clearAllMocks();
   });
 
-  it("should work by now", (): void => {
-    sut.startServer();
+  // it("should work by now", (): void => {
+  //   sut.startServer();
+  // });
+
+  it("should start server on port 8080 and end the request", async (): Promise<void> => {
+    await sut.startServer();
+
+    expect(serverMock.listen).toHaveBeenCalledWith(8080);
+
+    console.log("checking response.end calls:");
+    expect(responseMock.end).toHaveBeenCalled();
   });
 });
