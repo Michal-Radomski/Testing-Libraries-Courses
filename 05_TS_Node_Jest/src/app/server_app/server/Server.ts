@@ -21,6 +21,7 @@ export class Server {
       console.log(`Got request for ${req.url}`);
       await this.handleRequest(req, res);
       res.end();
+      // console.log("called end");
     });
     this.server.listen(8080);
     console.log("server started");
