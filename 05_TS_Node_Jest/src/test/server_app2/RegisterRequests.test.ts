@@ -39,6 +39,7 @@ describe("Register requests test suite", (): void => {
     await new Server().startServer();
 
     await new Promise(process.nextTick); // this solves timing issues
+    // console.log("process.nextTick:", process.nextTick);
 
     expect(responseWrapper.statusCode).toBe(HTTP_CODES.CREATED);
     expect(responseWrapper.body).toEqual(
