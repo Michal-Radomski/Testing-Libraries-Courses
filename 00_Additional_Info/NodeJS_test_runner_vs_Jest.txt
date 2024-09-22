@@ -1,0 +1,41 @@
+The differences between the Node.js test runner module (`node:test`) and libraries like Jest can be summarized across several key aspects:
+
+### 1. **Built-in vs. Third-party**
+- **Node.js Test Runner**: The `node:test` module is built into Node.js starting from version 18, providing a native solution for testing without needing additional dependencies. This integration allows for a more straightforward setup and reduces the number of external packages in a project.
+- **Jest**: Jest is a third-party testing framework that requires installation and configuration. It is widely used in the JavaScript ecosystem and has been around longer than the native test runner.
+
+### 2. **Features and Functionality**
+- **Node.js Test Runner**:
+  - Basic features include running tests, assertions via the built-in `node:assert` module, and support for asynchronous tests.
+  - It supports watch mode to rerun tests automatically upon file changes.
+  - Custom reporters can be implemented, but it lacks some advanced features out of the box, such as snapshot testing and extensive mocking capabilities[1][3][5].
+  
+- **Jest**:
+  - Jest offers a rich set of features including built-in mocking, snapshot testing, code coverage reports, and parallel test execution.
+  - It provides a more user-friendly API with functions like `describe`, `it`, and `expect`, which many developers find easier to use.
+  - Jest has extensive community support and plugins available for various frameworks (e.g., React, Angular) and features like watch mode with improved UX[3][4].
+
+### 3. **Mocking Capabilities**
+- **Node.js Test Runner**: While it has introduced basic mocking capabilities, they are not as robust or user-friendly as those offered by Jest. Users may find it challenging to mock modules or functions without direct access[2][4].
+- **Jest**: Jest's mocking capabilities are comprehensive, allowing for easy mocking of functions and modules with minimal setup. This includes automatic mocking of dependencies and detailed control over mock implementations[1][3].
+
+### 4. **Error Reporting and Output**
+- **Node.js Test Runner**: The output is simpler and less customizable compared to Jest. While it provides essential information about test results, it may lack the detailed error reporting that helps developers quickly identify issues[2][4].
+- **Jest**: Jest offers more polished output with better formatting for errors and failures, making it easier for developers to understand what went wrong during testing[3].
+
+### 5. **Community and Ecosystem**
+- **Node.js Test Runner**: Being relatively new, it does not yet have the same level of community support or ecosystem as Jest. This may lead to fewer resources, tutorials, or plugins available for specific use cases[1][4].
+- **Jest**: With a large user base and extensive documentation, Jest benefits from a vibrant community that contributes to its development and provides support through various channels.
+
+### Conclusion
+In summary, while the Node.js test runner offers a lightweight, built-in solution for testing JavaScript applications, it lacks some of the advanced features and user-friendliness provided by Jest. Developers may choose the native test runner for simpler projects or when minimizing dependencies is a priority, whereas Jest remains a powerful choice for complex applications requiring extensive testing capabilities.
+
+Citations:
+[1] https://pawelgrzybek.com/you-might-not-need-jest-the-node-js-native-test-runner-is-great/
+[2] https://www.reddit.com/r/node/comments/18kvrog/moving_from_jest_to_nodes_builtin_test_runner/
+[3] https://betterstack.com/community/guides/testing/best-node-testing-libraries/
+[4] https://www.mehulkar.com/blog/2024/04/replacing-jest-with-node-test-runner/
+[5] https://nodejs.org/api/test.html
+[6] https://www.youtube.com/watch?v=2YfIB4gia60
+[7] https://romeerez.hashnode.dev/best-nodejs-test-framework-with-benchmarks
+[8] https://github.com/nodejs/nodejs.org/issues/6123
