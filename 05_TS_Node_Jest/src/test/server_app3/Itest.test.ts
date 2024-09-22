@@ -191,8 +191,9 @@ describe("Server app integration tests", (): void => {
     expect(result.body.userId).toBeDefined();
   });
 
+  //* npm run itest -- -u (updates snapshot)
   it("snapshot demo", async (): Promise<void> => {
-    jest.spyOn(generated, "generateRandomId").mockReturnValueOnce("12345");
+    jest.spyOn(generated, "generateRandomId").mockReturnValueOnce("12345678");
     await fetch("http://localhost:8080/reservation", {
       method: HTTP_METHODS.POST,
       body: JSON.stringify(someReservation),
@@ -201,7 +202,7 @@ describe("Server app integration tests", (): void => {
       },
     });
 
-    const getResult = (await fetch(`http://localhost:8080/reservation/12345`, {
+    const getResult = (await fetch(`http://localhost:8080/reservation/12345678`, {
       method: HTTP_METHODS.GET,
       headers: {
         authorization: token,
