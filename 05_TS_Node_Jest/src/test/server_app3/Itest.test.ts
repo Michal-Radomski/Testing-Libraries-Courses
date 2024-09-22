@@ -1,3 +1,4 @@
+import * as generated from "../../app/server_app/data/IdGenerator";
 import { Account } from "../../app/server_app/model/AuthModel";
 import { Reservation } from "../../app/server_app/model/ReservationModel";
 import { HTTP_CODES, HTTP_METHODS } from "../../app/server_app/model/ServerModel";
@@ -30,7 +31,19 @@ describe("Server app integration tests", (): void => {
     user: "someUser",
   };
 
+  it("should register new user", async (): Promise<void> => {
+    const result = (await fetch("http://localhost:8080/register", {
+      method: HTTP_METHODS.POST,
+      body: JSON.stringify(someUser),
+    })) as Response;
+    const resultBody = await result.json();
+
+    expect(result.status).toBe(HTTP_CODES.CREATED);
+    expect(resultBody.userId).toBeDefined();
+  });
+
   let token: string;
+
   it("should login a register user", async (): Promise<void> => {
     const result = (await fetch("http://localhost:8080/login", {
       method: HTTP_METHODS.POST,
@@ -41,6 +54,7 @@ describe("Server app integration tests", (): void => {
     expect(result.status).toBe(HTTP_CODES.CREATED);
     expect(resultBody.token).toBeDefined();
     token = resultBody.token as string;
+    // console.log("token:", token);
   });
 
   let createdReservationId: string;
