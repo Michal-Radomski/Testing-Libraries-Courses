@@ -12,7 +12,7 @@ expect.extend({
     };
   },
   toHaveUser(reservation: Reservation, user: string) {
-    const hasRightUser = user == reservation.user;
+    const hasRightUser: boolean = user === reservation.user;
     return {
       pass: hasRightUser,
       message: () => `expected reservation to have user ${user}, received ${reservation.user}`,
