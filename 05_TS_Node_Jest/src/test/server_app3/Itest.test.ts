@@ -190,4 +190,26 @@ describe("Server app integration tests", (): void => {
     expect(result.statusCode).toBe(HTTP_CODES.CREATED);
     expect(result.body.userId).toBeDefined();
   });
+
+  it("snapshot demo", async (): Promise<void> => {
+    jest.spyOn(generated, "generateRandomId").mockReturnValueOnce("12345");
+    await fetch("http://localhost:8080/reservation", {
+      method: HTTP_METHODS.POST,
+      body: JSON.stringify(someReservation),
+      headers: {
+        authorization: token,
+      },
+    });
+
+    const getResult = (await fetch(`http://localhost:8080/reservation/12345`, {
+      method: HTTP_METHODS.GET,
+      headers: {
+        authorization: token,
+      },
+    })) as Response;
+    const getRequestBody: Reservation = await getResult.json();
+
+    expect(getRequestBody).toMatchSnapshot();
+    expect(getRequestBody).toMatchSnapshot();
+  });
 });
