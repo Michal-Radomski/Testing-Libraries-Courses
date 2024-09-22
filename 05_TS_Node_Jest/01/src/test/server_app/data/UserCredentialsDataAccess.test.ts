@@ -1,4 +1,4 @@
-import { DataBase } from "./../../../app/server_app/data/DataBase";
+import { DataBase } from "../../../app/server_app/data/DataBase";
 import { UserCredentialsDataAccess } from "../../../app/server_app/data/UserCredentialsDataAccess";
 import { Account } from "../../../app/server_app/model/AuthModel";
 
