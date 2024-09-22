@@ -16,7 +16,7 @@ const LoginComponent = ({ loginService, setToken }: LoginProps): JSX.Element => 
     event.preventDefault();
     console.log(userName + " " + password);
     if (userName && password) {
-      const loginResponse = await loginService.login(userName, password);
+      const loginResponse = (await loginService.login(userName, password)) as string;
       console.log({ loginResponse });
 
       if (loginResponse) {
