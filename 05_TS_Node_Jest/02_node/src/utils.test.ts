@@ -12,14 +12,18 @@ describe("Node test runner", (): void => {
     assert.strictEqual(actual, expected);
   });
 
-  test("sum mock", (): void => {
+  test("test a node mock", (): void => {
     // console.log("mock:", mock);
     const toUpperCaseStringMock = mock.fn((arg: string): string => {
       return toUpperCaseString(arg);
     });
     // console.log("toUpperCaseStringMock:", toUpperCaseStringMock);
+
     assert.strictEqual(toUpperCaseStringMock.mock.callCount(), 0);
-    assert.strictEqual(toUpperCaseString("abc"), "ABC");
-    assert.strictEqual(toUpperCaseStringMock.mock.callCount(), 1);
+    assert.strictEqual(toUpperCaseStringMock("abc"), "ABC");
+    toUpperCaseStringMock("abc");
+    assert.strictEqual(toUpperCaseStringMock.mock.callCount(), 2);
+
+    mock.reset();
   });
 });
