@@ -1,12 +1,12 @@
 import { IncomingHttpHeaders, request, RequestOptions } from "http";
 
-type awesomeRequestResponse = {
+export type AwesomeRequestResponse = {
   statusCode: number;
   headers: IncomingHttpHeaders;
   body: any;
 };
 
-export async function makeAwesomeRequest(options: RequestOptions, body?: object): Promise<awesomeRequestResponse> {
+export async function makeAwesomeRequest(options: RequestOptions, body?: object): Promise<AwesomeRequestResponse> {
   return new Promise((resolve, reject) => {
     const clientRequest = request(options, (incomingMessage) => {
       let response = {
