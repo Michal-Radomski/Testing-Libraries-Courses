@@ -37,9 +37,9 @@ export async function addUser(user: User): Promise<string> {
 }
 
 export async function getUser(userId: string): Promise<WithId<User>> {
-  const result = await usersCollection.findOne({
+  const result = (await usersCollection.findOne({
     _id: new ObjectId(userId),
-  });
+  })) as WithId<User>;
   return result;
 }
 

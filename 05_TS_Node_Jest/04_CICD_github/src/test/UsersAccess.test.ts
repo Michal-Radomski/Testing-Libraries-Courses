@@ -20,12 +20,10 @@ describe("UsersAccess test suite", (): void => {
   let userId: string;
   test("insert a user", async (): Promise<void> => {
     userId = await usersAccess.addUser(someUser);
-    const a = 5;
   });
 
   test("find user", async (): Promise<void> => {
     const retrievedUser: WithId<User> = await usersAccess.getUser(userId);
-    const a = 5;
     expect(retrievedUser).toEqual(someUser);
   });
 
