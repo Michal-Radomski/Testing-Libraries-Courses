@@ -69,9 +69,93 @@ describe("Login component tests", (): void => {
 
     user.click(loginButton);
 
-    await waitFor(async (): Promise<void> => {
-      const resultLabel = screen.getByTestId("resultLabel");
+    await waitFor((): void => {
+      const resultLabel = screen.getByTestId("resultLabel") as HTMLLabelElement;
       expect(resultLabel.textContent).toBe("UserName and password required!");
     });
+  });
+
+  it("right credentials - successful login", async (): Promise<void> => {
+    loginServiceMock.login.mockResolvedValueOnce("1234");
+
+    // eslint-disable-next-line testing-library/no-node-access
+    const inputs = container.querySelectorAll("input") as NodeListOf<HTMLInputElement>; //* Error
+    const userNameInput = inputs[0];
+    const passwordInput = inputs[1];
+    const loginButton = inputs[2];
+
+    fireEvent.change(userNameInput, { target: { value: "someUser" } });
+    fireEvent.change(passwordInput, { target: { value: "somePassword" } });
+    fireEvent.click(loginButton);
+
+    expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
+
+    const resultLabel = (await screen.findByTestId("resultLabel")) as HTMLLabelElement;
+    expect(resultLabel.textContent).toBe("successful login");
+  });
+
+  it("right credentials - successful login - with user calls", async (): Promise<void> => {
+    loginServiceMock.login.mockResolvedValueOnce("1234");
+
+    // eslint-disable-next-line testing-library/no-node-access
+    const inputs = container.querySelectorAll("input") as NodeListOf<HTMLInputElement>; //* Error;
+    const userNameInput = inputs[0];
+    const passwordInput = inputs[1];
+    const loginButton = inputs[2];
+
+    user.click(userNameInput);
+    user.keyboard("someUser");
+    user.click(passwordInput);
+    user.keyboard("somePassword");
+    user.click(loginButton);
+
+    // await waitFor(async () => {
+    //   await expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
+    // });
+
+    await waitFor(async (): Promise<void> => {
+      const resultLabel = (await screen.findByTestId("resultLabel")) as HTMLLabelElement;
+      expect(resultLabel.textContent).toBe("successful login");
+    });
+  });
+
+  it("right credentials - unsuccessful login", async (): Promise<void> => {
+    loginServiceMock.login.mockResolvedValueOnce(undefined);
+
+    // eslint-disable-next-line testing-library/no-node-access
+    const inputs = container.querySelectorAll("input") as NodeListOf<HTMLInputElement>; //* Error;;
+    const userNameInput = inputs[0];
+    const passwordInput = inputs[1];
+    const loginButton = inputs[2];
+
+    fireEvent.change(userNameInput, { target: { value: "someUser" } });
+    fireEvent.change(passwordInput, { target: { value: "somePassword" } });
+    fireEvent.click(loginButton);
+
+    expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
+
+    const resultLabel = (await screen.findByTestId("resultLabel")) as HTMLLabelElement;
+    expect(resultLabel.textContent).toBe("invalid credentials");
+  });
+
+  it("right credentials - unsuccessful login - solve act warnings", async (): Promise<void> => {
+    const result = Promise.resolve(undefined);
+    loginServiceMock.login.mockReturnValueOnce(result);
+
+    // eslint-disable-next-line testing-library/no-node-access
+    const inputs = container.querySelectorAll("input") as NodeListOf<HTMLInputElement>; //* Error;;
+    const userNameInput = inputs[0];
+    const passwordInput = inputs[1];
+    const loginButton = inputs[2];
+
+    fireEvent.change(userNameInput, { target: { value: "someUser" } });
+    fireEvent.change(passwordInput, { target: { value: "somePassword" } });
+    fireEvent.click(loginButton);
+
+    await result;
+    expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
+
+    const resultLabel = (await screen.findByTestId("resultLabel")) as HTMLLabelElement;
+    expect(resultLabel.textContent).toBe("invalid credentials");
   });
 });
