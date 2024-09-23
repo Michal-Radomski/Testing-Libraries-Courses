@@ -3,3 +3,9 @@
 
 *.prisma linguist-detectable=true
 *.prisma linguist-language=Prisma
+
+*.yml linguist-detectable=true
+*.yml linguist-language=YAML
+
+*.yaml linguist-detectable=true
+*.yaml linguist-language=YAML
