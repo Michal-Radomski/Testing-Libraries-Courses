@@ -103,15 +103,15 @@ describe("Login component tests", (): void => {
     const passwordInput = inputs[1];
     const loginButton = inputs[2];
 
-    user.click(userNameInput);
-    user.keyboard("someUser");
-    user.click(passwordInput);
-    user.keyboard("somePassword");
-    user.click(loginButton);
+    await user.click(userNameInput);
+    await user.keyboard("someUser");
+    await user.click(passwordInput);
+    await user.keyboard("somePassword");
+    await user.click(loginButton);
 
-    // await waitFor(async () => {
-    //   await expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
-    // });
+    await waitFor((): void => {
+      expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
+    });
 
     await waitFor(async (): Promise<void> => {
       const resultLabel = (await screen.findByTestId("resultLabel")) as HTMLLabelElement;
@@ -153,6 +153,7 @@ describe("Login component tests", (): void => {
     fireEvent.click(loginButton);
 
     await result;
+    // console.log("result:", result);
     expect(loginServiceMock.login).toBeCalledWith("someUser", "somePassword");
 
     const resultLabel = (await screen.findByTestId("resultLabel")) as HTMLLabelElement;
