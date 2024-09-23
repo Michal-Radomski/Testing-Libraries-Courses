@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import user from "@testing-library/user-event";
 
 import LoginComponent from "./LoginComponent";
 
@@ -31,7 +32,7 @@ describe("Login component tests", (): void => {
   });
 
   it("should render correctly the login component", (): void => {
-    const mainElement = screen.getByRole("main") as HTMLDivElement;
+    const mainElement = screen.getByRole("main") as HTMLDivElement; //* Aria-role
     expect(mainElement).toBeInTheDocument();
     expect(screen.queryByTestId("resultLabel")).not.toBeInTheDocument();
   });
@@ -51,5 +52,26 @@ describe("Login component tests", (): void => {
     expect(inputs[0].value).toBe("");
     expect(inputs[1].value).toBe("");
     expect(inputs[2].value).toBe("Login");
+  });
+
+  it("Click login button with incomplete credentials - show required message", (): void => {
+    const inputs = screen.getAllByTestId("input") as HTMLInputElement[];
+    const loginButton = inputs[2];
+
+    fireEvent.click(loginButton);
+    const resultLabel = screen.getByTestId("resultLabel") as HTMLLabelElement;
+    expect(resultLabel.textContent).toBe("UserName and password required!");
+  });
+
+  it("Click login button with incomplete credentials - show required message - with user click", async (): Promise<void> => {
+    const inputs = screen.getAllByTestId("input") as HTMLInputElement[];
+    const loginButton = inputs[2];
+
+    user.click(loginButton);
+
+    await waitFor(async (): Promise<void> => {
+      const resultLabel = screen.getByTestId("resultLabel");
+      expect(resultLabel.textContent).toBe("UserName and password required!");
+    });
   });
 });
