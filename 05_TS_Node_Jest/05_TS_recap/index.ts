@@ -56,11 +56,11 @@ interface IServer {
 }
 
 class Server implements IServer {
-  public port: number;
-  public address: string;
+  // private port: number;
+  protected address: string;
   public date: string = "";
 
-  constructor(port: number, address: string) {
+  constructor(private port: number, address: string) {
     this.port = port;
     this.address = address;
     this.date = "";
@@ -68,7 +68,7 @@ class Server implements IServer {
 
   async startServer() {
     const data = await this.getData(123);
-    console.log(`Starting server at: ${this.address}: ${this.port}`);
+    console.log(`Starting server at: ${this.address}: ${this.port}, ${data}`);
     return function () {};
   }
 
@@ -81,3 +81,13 @@ class Server implements IServer {
 
 const someServer: IServer = new Server(8080, "localhost");
 someServer.startServer();
+
+class BDServer extends Server {
+  constructor(port: number, address: string) {
+    super(port, address);
+    console.log({ port, address });
+  }
+}
+
+const dbServer = new BDServer(80, "localhost");
+console.log("dbServer:", dbServer);
