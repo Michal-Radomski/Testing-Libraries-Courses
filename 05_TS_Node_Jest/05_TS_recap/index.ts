@@ -39,3 +39,45 @@ printEmailIfPerson({
   firstName: "John",
   lastName: "Doe",
 });
+
+function doTasks(tasks: number): void | never | undefined {
+  if (tasks > 3) {
+    throw new Error("Too many tasks!");
+  }
+}
+
+const stuff = doTasks(2);
+console.log("stuff:", stuff);
+
+//* Classes
+interface IServer {
+  startServer(): void;
+  stopServer(): void;
+}
+
+class Server implements IServer {
+  public port: number;
+  public address: string;
+  public date: string = "";
+
+  constructor(port: number, address: string) {
+    this.port = port;
+    this.address = address;
+    this.date = "";
+  }
+
+  async startServer() {
+    const data = await this.getData(123);
+    console.log(`Starting server at: ${this.address}: ${this.port}`);
+    return function () {};
+  }
+
+  stopServer(): void {}
+
+  async getData(id: number): Promise<string> {
+    return "some SPecial Data" + id;
+  }
+}
+
+const someServer: IServer = new Server(8080, "localhost");
+someServer.startServer();
