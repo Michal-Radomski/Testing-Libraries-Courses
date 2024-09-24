@@ -40,15 +40,6 @@ printEmailIfPerson({
   lastName: "Doe",
 });
 
-function doTasks(tasks: number): void | never | undefined {
-  if (tasks > 3) {
-    throw new Error("Too many tasks!");
-  }
-}
-
-const stuff = doTasks(2);
-console.log("stuff:", stuff);
-
 //* Classes
 interface IServer {
   startServer(): void;
@@ -175,4 +166,41 @@ console.log(book2.getFormat()); // Output: paperback
   }
 
   new Observable<typeof John>().subscribe(John); // Subscribed to John
+}
+
+{
+  //* Undefined, null, never, unknown
+  let abc = undefined;
+  const def = null;
+  console.log({ abc, def });
+
+  function getData(): string | undefined {
+    return "";
+  }
+
+  const data = getData();
+
+  if (data) {
+    const someOtherData = data;
+    console.log({ someOtherData });
+  }
+  console.log("data:", data);
+
+  let input: unknown;
+  input = "someInput";
+  let someSensitiveValue: string;
+
+  if (typeof input === "string") {
+    someSensitiveValue = input;
+  }
+  console.log("input:", input);
+
+  function doTasks(tasks: number): void | never | undefined {
+    if (tasks > 3) {
+      throw new Error("Too many tasks!");
+    }
+  }
+
+  const stuff = doTasks(2);
+  console.log("stuff:", stuff);
 }
