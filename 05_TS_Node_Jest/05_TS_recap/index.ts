@@ -140,3 +140,39 @@ console.log(book1.getFormat()); // Output: ebook
 const book2 = new Paperback("To Kill a Mockingbird", "Harper Lee");
 console.log(book2.getBookInfo()); // Output: To Kill a Mockingbird by Harper Lee
 console.log(book2.getFormat()); // Output: paperback
+
+{
+  //* Generics
+  function returnKeys<T extends Object>(arg: T): T {
+    console.log("Object.keys(arg):", Object.keys(arg));
+    return arg;
+  }
+
+  const a = returnKeys({
+    abc: "def",
+  });
+
+  console.log("a:", a);
+
+  interface Person<T> {
+    name: string;
+    age: number;
+    special: T;
+  }
+
+  const John: Person<string> = {
+    special: "This is my special property",
+    name: "John",
+    age: 20,
+  };
+
+  console.log("John:", John);
+
+  class Observable<T extends Person<string>> {
+    subscribe(arg: T): void {
+      console.log(`Subscribed to ${arg.name}`);
+    }
+  }
+
+  new Observable<typeof John>().subscribe(John); // Subscribed to John
+}
