@@ -91,3 +91,52 @@ class BDServer extends Server {
 
 const dbServer = new BDServer(80, "localhost");
 console.log("dbServer:", dbServer);
+dbServer.startServer();
+
+//* Abstract Class
+// Interface definition
+interface Book {
+  title: string;
+  author: string;
+  getBookInfo(): string;
+}
+
+// Abstract class implementing the interface
+abstract class Publication implements Book {
+  title: string;
+  author: string;
+
+  constructor(title: string, author: string) {
+    this.title = title;
+    this.author = author;
+  }
+
+  abstract getFormat(): string;
+
+  getBookInfo(): string {
+    return `${this.title} by ${this.author}`;
+  }
+}
+
+// Concrete subclass extending the abstract class
+class Ebook extends Publication {
+  getFormat(): string {
+    return "ebook";
+  }
+}
+
+// Concrete subclass extending the abstract class
+class Paperback extends Publication {
+  getFormat(): string {
+    return "paperback";
+  }
+}
+
+// Usage
+const book1 = new Ebook("The Great Gatsby", "F. Scott Fitzgerald");
+console.log(book1.getBookInfo()); // Output: The Great Gatsby by F. Scott Fitzgerald
+console.log(book1.getFormat()); // Output: ebook
+
+const book2 = new Paperback("To Kill a Mockingbird", "Harper Lee");
+console.log(book2.getBookInfo()); // Output: To Kill a Mockingbird by Harper Lee
+console.log(book2.getFormat()); // Output: paperback
