@@ -204,3 +204,33 @@ console.log(book2.getFormat()); // Output: paperback
   const stuff = doTasks(2);
   console.log("stuff:", stuff);
 }
+
+{
+  //* Enums and Switch statements
+  enum AuthError {
+    WRONG_CREDENTIALS,
+    SERVER_FAIL,
+    EXPIRED_SESSION,
+    UNEXPECTED_ERROR,
+  }
+
+  console.log("AuthError[AuthError.WRONG_CREDENTIALS]:", AuthError[AuthError.WRONG_CREDENTIALS]);
+
+  function handleError(error: AuthError): void {
+    switch (error) {
+      case AuthError.EXPIRED_SESSION:
+        console.log("Get a new session!");
+        break;
+      case AuthError.SERVER_FAIL:
+        console.log("Restart the server!");
+        break;
+      case AuthError.WRONG_CREDENTIALS:
+      case AuthError.UNEXPECTED_ERROR:
+        console.log("Check your input!");
+        break;
+      default:
+        break;
+    }
+  }
+  handleError(AuthError.SERVER_FAIL); // Restart the server!
+}
