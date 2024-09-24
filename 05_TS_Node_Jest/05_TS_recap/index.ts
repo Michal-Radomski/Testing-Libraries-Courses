@@ -208,13 +208,14 @@ console.log(book2.getFormat()); // Output: paperback
 {
   //* Enums and Switch statements
   enum AuthError {
-    WRONG_CREDENTIALS,
-    SERVER_FAIL,
-    EXPIRED_SESSION,
-    UNEXPECTED_ERROR,
+    WRONG_CREDENTIALS = "WRONG_CREDENTIALS",
+    SERVER_FAIL = "SERVER_FAIL",
+    EXPIRED_SESSION = "EXPIRED_SESSION",
+    UNEXPECTED_ERROR = "UNEXPECTED_ERROR",
   }
 
   console.log("AuthError[AuthError.WRONG_CREDENTIALS]:", AuthError[AuthError.WRONG_CREDENTIALS]);
+  console.log("AuthError?.WRONG_CREDENTIALS:", AuthError?.WRONG_CREDENTIALS);
 
   function handleError(error: AuthError): void {
     switch (error) {
