@@ -192,6 +192,7 @@ console.log(book2.getFormat()); // Output: paperback
 
   if (typeof input === "string") {
     someSensitiveValue = input;
+    console.log("someSensitiveValue:", someSensitiveValue);
   }
   console.log("input:", input);
 
@@ -234,4 +235,65 @@ console.log(book2.getFormat()); // Output: paperback
     }
   }
   handleError(AuthError.SERVER_FAIL); // Restart the server!
+}
+
+//* Decorators
+const someObject: Manager = {
+  someProperty: "initialValue",
+};
+
+class Manager {
+  @watchChange
+  // @linkValue(someObject)
+  someProperty!: string;
+}
+
+// watchChange(Manager.prototype, "someProperty");
+
+const manager: Manager = new Manager();
+manager.someProperty = "123";
+console.log("someObject.someProperty:", someObject.someProperty);
+manager.someProperty = "435";
+console.log("someObject.someProperty:", someObject.someProperty);
+
+// function linkValue(otherObject: Manager): (target: Manager, key: string) => void {
+//   return function (target: Manager, key: string) {
+//     let property = target[key as keyof Manager];
+
+//     const getter = (): string => {
+//       return property;
+//     };
+
+//     const setter = (newVal: string): void => {
+//       property = newVal;
+//       otherObject[key as keyof Manager] = newVal;
+//     };
+
+//     Object.defineProperty(target, key, {
+//       get: getter,
+//       set: setter,
+//       configurable: true,
+//       enumerable: true,
+//     });
+//   };
+// }
+
+function watchChange(target: Manager, key: string): void {
+  let property = target[key as keyof Manager];
+
+  const getter = (): string => {
+    return property;
+  };
+
+  const setter = (newVal: string): void => {
+    console.log(`${key as string} changed from ${property} to ${newVal}`);
+    property = newVal;
+  };
+
+  Object.defineProperty(target, key, {
+    get: getter,
+    set: setter,
+    configurable: true,
+    enumerable: true,
+  });
 }
