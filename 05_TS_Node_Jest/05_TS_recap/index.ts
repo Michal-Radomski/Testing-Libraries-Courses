@@ -297,3 +297,25 @@ function watchChange(target: Manager, key: string): void {
     enumerable: true,
   });
 }
+
+// Example 2
+function sealed(constructor: Function) {
+  Object.seal(constructor);
+  Object.seal(constructor.prototype);
+}
+
+@sealed
+class Greeter {
+  greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  greet() {
+    console.log(`Hello, ${this.greeting}`);
+  }
+}
+
+const greeter = new Greeter("world");
+console.log("greeter:", greeter);
