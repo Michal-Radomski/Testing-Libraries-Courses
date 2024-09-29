@@ -1,0 +1,39 @@
+The differences between **automation testing** and **manual testing** are significant, each having its own strengths and weaknesses. Here's a concise comparison:
+
+## Key Differences
+
+| Criteria                     | Manual Testing                                     | Automation Testing                                   |
+|------------------------------|---------------------------------------------------|-----------------------------------------------------|
+| **Execution Speed**          | Slower; tests are executed sequentially by humans | Faster; tests can run in parallel using scripts     |
+| **Human Involvement**        | Requires significant human intervention            | Minimal human intervention after initial setup      |
+| **Accuracy**                 | Prone to human error                               | Higher accuracy; eliminates human error              |
+| **Cost**                     | Higher long-term costs due to manpower            | Higher initial investment but lower long-term costs  |
+| **Test Coverage**            | Limited by time and resources                      | Can cover more tests simultaneously                  |
+| **Flexibility**              | More adaptable to changes and exploratory testing  | Less flexible; relies on predefined scripts          |
+| **Usability Testing**        | Better for assessing user experience and usability | Not suitable for subjective evaluations              |
+| **Maintenance**              | Easier to maintain as no complex scripts are needed| Requires ongoing maintenance of scripts and tools    |
+
+## When to Use Each
+
+- **Manual Testing** is ideal for:
+  - Exploratory testing
+  - Usability testing
+  - Short-term projects where automation costs are unjustifiable
+
+- **Automation Testing** is best suited for:
+  - Repetitive tasks (e.g., regression testing)
+  - Large-scale testing with extensive test coverage
+  - Situations requiring consistent results over time
+
+## Conclusion
+
+Both testing methods are essential in software development. Automation enhances speed and accuracy, particularly for repetitive tasks, while manual testing excels in scenarios requiring human judgment and adaptability. Organizations often benefit from a hybrid approach, utilizing both methods based on project needs and specific testing scenarios[1][2][3][4].
+
+Citations:
+[1] https://www.browserstack.com/guide/manual-vs-automated-testing-differences
+[2] https://testsigma.com/blog/manual-testing-vs-automation-testing-which-one-should-you-choose/
+[3] https://www.globalapptesting.com/blog/automated-testing-vs-manual-testing
+[4] https://katalon.com/resources-center/blog/manual-testing-vs-automation-testing
+[5] https://qalified.com/blog/manual-vs-automated-software-testing/
+[6] https://www.perfecto.io/blog/automated-testing-vs-manual-testing-vs-continuous-testing
+[7] https://chop-chop.org/blog/manual-testing-vs-automated-testing-choosing-the-best-approach-for-your-project
