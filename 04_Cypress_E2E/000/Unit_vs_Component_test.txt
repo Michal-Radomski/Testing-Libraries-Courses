@@ -1,0 +1,72 @@
+Component testing and unit testing are closely related concepts in software development, but they serve different purposes and operate at different levels of granularity. Here’s a detailed comparison based on the information from the search results.
+
+## Definitions
+
+- **Unit Testing**: This is a testing method that focuses on individual units or components of code, typically functions or methods, in isolation from the rest of the application. The goal is to verify that each unit performs as expected. Unit tests are generally written and executed by developers during the development process.
+
+- **Component Testing**: This type of testing evaluates larger parts of a system, often entire components that consist of multiple units. Component testing checks how these units work together within the component. It is usually performed after unit testing and can involve both manual and automated testing approaches.
+
+## Key Differences
+
+| Aspect                | Unit Testing                                      | Component Testing                                |
+|-----------------------|--------------------------------------------------|-------------------------------------------------|
+| **Focus**             | Individual units of code (functions, methods)   | Interaction between multiple units within a component |
+| **Execution Level**   | Granular level (method/function level)           | Application level (component/module level)      |
+| **Performed By**      | Developers                                       | Testing teams or QA engineers                   |
+| **Testing Approach**  | Typically white-box testing                       | Often black-box testing                          |
+| **Error Detection**   | Easier to detect errors                          | More complex error detection                     |
+| **Sequence in SDLC**  | Performed first, before integration              | Conducted after unit tests                      |
+| **Validation Focus**  | Validates internal logic and functionality       | Validates overall behavior and interaction       |
+
+## Examples
+
+### Unit Testing Example
+A unit test might check if a function correctly adds two numbers:
+
+```typescript
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+// Unit Test
+describe('add function', () => {
+    it('should return the sum of two numbers', () => {
+        expect(add(2, 3)).toEqual(5);
+        expect(add(-1, 1)).toEqual(0);
+    });
+});
+```
+
+### Component Testing Example
+A component test might check if a `Login` component behaves correctly when interacting with its child components:
+
+```typescript
+import { mount } from '@cypress/react';
+import Login from './Login';
+
+describe('Login Component', () => {
+    it('should display an error message on invalid login', () => {
+        mount(<Login />);
+        
+        cy.get('input[name="username"]').type('invalidUser');
+        cy.get('input[name="password"]').type('wrongPassword');
+        cy.get('button[type="submit"]').click();
+
+        cy.get('.error-message').should('be.visible').and('contain', 'Invalid credentials');
+    });
+});
+```
+
+## Conclusion
+
+While both unit testing and component testing are critical for ensuring software quality, they target different aspects of the application. Unit tests focus on the smallest testable parts of the code in isolation, while component tests assess how those parts work together within larger modules. Understanding these differences helps teams implement a comprehensive testing strategy that addresses both micro-level functionality and macro-level interactions within their applications.
+
+Citations:
+[1] https://www.qodo.ai/glossary/component-tests/
+[2] https://www.javatpoint.com/component-testing-vs-unit-testing
+[3] https://circleci.com/blog/component-vs-unit-testing/
+[4] https://www.geeksforgeeks.org/difference-between-component-and-unit-testing/
+[5] https://q-pros.com/component-testing-and-unit-testing/
+[6] https://www.reddit.com/r/QualityAssurance/comments/zhqb4a/unitcomponente2euat/
+[7] https://www.youtube.com/watch?v=Ky8Cn_byxzY
+[8] https://github.com/dominique-mueller/create-react-app-typescript-cypress-unit-integration-tests-setup
