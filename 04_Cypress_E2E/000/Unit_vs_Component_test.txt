@@ -1,4 +1,4 @@
-Component testing and unit testing are closely related concepts in software development, but they serve different purposes and operate at different levels of granularity. Here’s a detailed comparison based on the information from the search results.
+Component testing and unit testing are closely related concepts in software development, but they serve different purposes and operate at different levels of granularity. Here's a detailed comparison based on the information from the search results.
 
 ## Definitions
 
