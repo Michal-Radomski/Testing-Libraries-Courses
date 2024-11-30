@@ -1,0 +1,99 @@
+Cypress is a powerful testing framework that can be used for various types of tests in a React application built with TypeScript. Below, we will explore the differences between **end-to-end (E2E)**, **integration**, and **component tests** in Cypress, along with examples for each type.
+
+## End-to-End Testing (E2E)
+
+**Definition**: E2E testing verifies the entire application flow from start to finish, simulating user interactions in a real browser environment. It ensures that all parts of the application work together as expected.
+
+### Example
+Here's a simple E2E test using Cypress:
+
+```typescript
+describe('E2E Test for Login', () => {
+    it('should log in successfully', () => {
+        cy.visit('/login'); // Navigate to the login page
+        cy.get('input[name="username"]').type('testuser'); // Fill in username
+        cy.get('input[name="password"]').type('password123'); // Fill in password
+        cy.get('button[type="submit"]').click(); // Click the submit button
+
+        // Assert that the user is redirected to the dashboard
+        cy.url().should('include', '/dashboard');
+        cy.get('.welcome-message').should('contain', 'Welcome, testuser');
+    });
+});
+```
+In this example, the test simulates a user logging into an application and checks if they are redirected to the dashboard.
+
+## Integration Testing
+
+**Definition**: Integration testing focuses on verifying that multiple components or services work together correctly. It is less comprehensive than E2E testing but more thorough than unit tests.
+
+### Example
+An integration test might check how two components interact:
+
+```typescript
+import { mount } from '@cypress/react';
+import { MyComponent } from './MyComponent';
+import { AnotherComponent } from './AnotherComponent';
+
+describe('Integration Test for Components', () => {
+    it('should display data from AnotherComponent in MyComponent', () => {
+        mount(<MyComponent />);
+        
+        // Simulate interaction or state change
+        cy.get('.fetch-data-button').click(); // Button that fetches data
+
+        // Assert that MyComponent displays data from AnotherComponent
+        cy.get('.data-display').should('contain', 'Expected Data');
+    });
+});
+```
+This test mounts `MyComponent` and checks if it correctly displays data fetched from `AnotherComponent`.
+
+## Component Testing
+
+**Definition**: Component testing is focused on testing individual components in isolation. This type of testing ensures that each component behaves as expected without relying on other parts of the application.
+
+### Example
+Here's how you might write a component test:
+
+```typescript
+import { mount } from '@cypress/react';
+import MyButton from './MyButton';
+
+describe('Component Test for MyButton', () => {
+    it('should render correctly and handle click events', () => {
+        const handleClick = cy.stub();
+        mount(<MyButton onClick={handleClick}>Click Me</MyButton>);
+
+        // Assert that the button renders correctly
+        cy.get('button').should('exist').and('have.text', 'Click Me');
+
+        // Simulate a click event
+        cy.get('button').click();
+        
+        // Assert that the click event handler was called
+        expect(handleClick).to.have.been.called;
+    });
+});
+```
+In this example, `MyButton` is tested to ensure it renders correctly and responds to click events.
+
+## Summary of Differences
+
+| Type of Test       | Focus                                   | Scope                                  |
+|--------------------|-----------------------------------------|----------------------------------------|
+| **End-to-End (E2E)** | Full application flow                   | Entire application                     |
+| **Integration**     | Interaction between components/services  | Multiple components/services            |
+| **Component**       | Individual component behavior           | Single component                        |
+
+By understanding these distinctions and utilizing Cypress effectively, you can ensure comprehensive testing coverage for your React applications built with TypeScript. Each type of test serves its purpose and contributes to a robust testing strategy.
+
+Citations:
+[1] https://github.com/dominique-mueller/create-react-app-typescript-cypress-unit-integration-tests-setup
+[2] https://stackoverflow.com/questions/65063082/integration-test-with-cypress-or-react-testing-library
+[3] https://stackoverflow.com/questions/63052799/react-typescript-cypress-test
+[4] https://www.cypress.io/blog/code-create-react-app-v3-and-its-cypress-tests-using-typescript
+[5] https://www.youtube.com/watch?v=6BkcHAEWeTU
+[6] https://www.freecodecamp.org/news/cypress-for-end-to-end-testing-react-apps/
+[7] https://github.com/cypress-io/cypress-example-recipes
+[8] https://stackoverflow.com/questions/73030653/solve-conflict-between-jest-and-cypress-in-a-react-js-app-with-typescript/73040081
